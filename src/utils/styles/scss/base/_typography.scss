@@ -1,0 +1,166 @@
+@use '../mixins/breakpoint' as *;
+
+
+.title_description {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.upper_title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.xl_title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+
+  @include breakpoint(sm) {
+    & {
+      font-size: 36px;
+      line-height: 46px;
+    }
+  }
+
+  @include breakpoint(md) {
+    & {
+      font-size: 44px;
+      line-height: 54px;
+    }
+  }
+
+  @include breakpoint(lg) {
+    & {
+      font-size: 50px;
+      line-height: 60px;
+    }
+  }
+
+  @include breakpoint(2xl) {
+    & {
+      font-size: 58px;
+      line-height: 68px;
+    }
+  }
+
+  @include breakpoint(3xl) {
+    & {
+      font-size: 64px;
+      line-height: 74px;
+    }
+  }
+}
+
+.lg_title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+
+  @include breakpoint(sm) {
+    & {
+      font-size: 26px;
+      line-height: 36px;
+    }
+  }
+
+  @include breakpoint(md) {
+    & {
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
+
+  @include breakpoint(lg) {
+    & {
+      font-size: 34px;
+      line-height: 44px;
+    }
+  }
+
+  @include breakpoint(2xl) {
+    & {
+      font-size: 37px;
+      line-height: 47px;
+    }
+  }
+
+  @include breakpoint(3xl) {
+    & {
+      font-size: 40px;
+      line-height: 50px;
+    }
+  }
+}
+
+.md_title {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 29px;
+
+  @include breakpoint(sm) {
+    & {
+      font-size: 21px;
+      line-height: 31px;
+    }
+  }
+
+  @include breakpoint(md) {
+    & {
+      font-size: 23px;
+      line-height: 33px;
+    }
+  }
+
+  @include breakpoint(lg) {
+    & {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+
+  @include breakpoint(2xl) {
+    & {
+      font-size: 27px;
+      line-height: 37px;
+    }
+  }
+
+  @include breakpoint(3xl) {
+    & {
+      font-size: 32px;
+      line-height: 42px;
+    }
+  }
+}
+
+.sm_title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  @include breakpoint(lg) {
+    & {
+      font-size: 19px;
+      line-height: 30px;
+    }
+  }
+
+  @include breakpoint(3xl) {
+    & {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+}
+
+.xs_title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+
+
+
+

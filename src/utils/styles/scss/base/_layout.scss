@@ -1,0 +1,53 @@
+/*----------------------------------------
+    Layout
+-----------------------------------------*/
+@use '../mixins/breakpoint' as *;
+
+// Custom container start here
+.flex_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .container {
+    width: 100%;
+    max-width: 1368px !important;
+    padding: 60px 16px;
+    flex-grow: 0 !important;
+  }
+
+  .container.padding_0 {
+    padding: 0 16px;
+  }
+
+  @include breakpoint(lg) {
+    .container {
+      padding: 80px 24px;
+    }
+
+    .container.padding_0 {
+      padding: 0 24px;
+    }
+  }
+
+  @include breakpoint(xl) {
+    .container {
+      padding: 100px 24px;
+    }
+
+    .container.padding_0 {
+      padding: 0 24px;
+    }
+  }
+
+  @include breakpoint(3xl) {
+    .container {
+      padding: 120px 24px;
+    }
+
+    .container.padding_0 {
+      padding: 0 24px;
+    }
+  }
+}

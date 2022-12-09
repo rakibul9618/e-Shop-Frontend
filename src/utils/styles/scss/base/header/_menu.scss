@@ -1,0 +1,212 @@
+@use '../../mixins/breakpoint' as *;
+@use '../../config/variables' as C;
+
+// default css
+
+.navbar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+  .logo {
+    width: 80px;
+    // flex: 1 0 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    img {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .logo_search {
+    font-size: 26px;
+  }
+
+  .nav_links {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    .nav_link {
+      padding: 12px 17px;
+      display: block;
+    }
+    .category {
+      padding: 8px 10px;
+      background-color: C.$primary;
+      color: C.$white;
+    }
+    .icon {
+      font-size: 20px;
+    }
+    .search {
+      width: 100%;
+      input {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid #d4d4d4;
+        border-radius: 6px;
+        padding: 10px 20px 10px 50px;
+        font-weight: 500;
+        font-size: 16px;
+      }
+      .icon {
+        font-size: 23px;
+        top: 50%;
+        left: 10px;
+        transform: translate(0, -50%);
+      }
+    }
+    .nav_buttons {
+      .cart_btn {
+        span {
+          text-align: center;
+          background-color: C.$primary;
+          border: 2px solid C.$white;
+          font-size: 12px;
+          font-weight: 500;
+          color: C.$white;
+          height: 25px;
+          width: 25px;
+          line-height: 19px;
+          top: -15px;
+          right: -15px;
+        }
+      }
+      .sign_up {
+        padding: 8px 10px;
+        background-color: C.$primary;
+        color: C.$white;
+        width: max-content;
+        overflow: hidden;
+      }
+      button {
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s;
+        &::after {
+          content: '';
+          position: absolute;
+          height: 45px;
+          width: 45px;
+          background-color: C.$pink;
+          transform: scale(0);
+          border-radius: 50%;
+          z-index: -1;
+          transition: all 0.4s;
+        }
+        &:hover {
+          color: C.$white;
+          &::after {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+
+  .nav_toggle_btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .nav_btn {
+    background-color: transparent;
+    border: none;
+  }
+
+  // media query start here
+
+  @include breakpoint(sm) {
+    .nav_links {
+      .category {
+        padding: 12px 30px;
+      }
+      .nav_buttons {
+        .sign_up {
+          padding: 12px 15px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(md) {
+    .logo {
+      width: 100px;
+    }
+    .nav_toggle_btn {
+      font-size: 28px;
+    }
+  }
+
+  @include breakpoint(xl) {
+    .logo {
+      width: 130px;
+    }
+  }
+  // media query end here
+}
+
+// dropdown
+
+.category:hover {
+  .dropdown_items {
+    top: 50px;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.dropdown_items {
+  background-color: C.$white;
+  color: C.$black;
+  top: 80px;
+  border: 1px solid #f3f3f3;
+  left: 0;
+  width: 250px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
+  .dropdown_link {
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #f3f3f3;
+  }
+  li:hover {
+    .department_menu {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  .department_menu {
+    top: 0;
+    min-height: 100%;
+    left: 100%;
+    // width: 700px;
+    transform: translateX(2px);
+    visibility: hidden;
+    opacity: 0;
+    background-color: C.$white;
+    border-radius: 0 0 24px 0;
+    box-shadow: 0px 4px 20px rgba(36, 41, 47, 0.02);
+    padding: 30px;
+    transition: all 0.3s ease-in-out;
+    .image_holder {
+      width: 250px;
+      border-radius: 5px;
+      overflow: hidden;
+      img {
+        display: block;
+      }
+    }
+    .submenu_items {
+      color: C.$gray_text;
+    }
+  }
+ 
+}
