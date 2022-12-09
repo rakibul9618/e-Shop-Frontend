@@ -1,14 +1,11 @@
-
-
 // icons
 import { IoClose } from 'react-icons/io5';
-
 import { ImArrowLeft2 } from 'react-icons/im';
 
-const Drawer = ({ children, isActive }) => {
+const Drawer = ({ children, className, isActive, align = "right" }) => {
   return (
-    <div className={`drawer ${isActive ? 'active' : ''}`}>
-      <div className="relative height-100">
+    <div className={`drawer  ${className ? className : ''} ${isActive ? 'active' : ''} ${align}`}>
+      <div className="relative h-100">
         <div className="back_slider"></div>
         {children}
       </div>
@@ -24,9 +21,9 @@ Drawer.Toggle = ({ ...rest }) => {
   )
 }
 
-Drawer.Content = ({ children, Class }) => {
+Drawer.Content = ({ children, className }) => {
   return (
-    <div className={`drawer_content ${Class}`}>
+    <div className={`drawer_content ${className}`}>
       {children}
     </div>
   )

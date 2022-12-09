@@ -1,0 +1,136 @@
+@use '../../mixins/breakpoint' as *;
+@use '../../config/variables' as C;
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.8s;
+  z-index: 1000;
+  .back_slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease-out;
+  }
+  .drawer_content {
+    width: 250px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 100px 0px 50px;
+    transition: all 0.8s ease-out;
+    background-color: C.$white;
+  }
+  &.right {
+    .back_slider {
+      right: 0;
+      left: 100%;
+    }
+    .drawer_content {
+      right: -100%;
+    }
+    .inner_drawer {
+      left: 0;
+      right: -100%;
+      &.active {
+        right: 0;
+      }
+    }
+  }
+  &.left {
+    .back_slider {
+      right: 100%;
+      left: 0;
+    }
+    .drawer_content {
+      left: -100%;
+    }
+    .inner_drawer {
+      right: 0;
+      left: -100%;
+      &.active {
+        left: 0;
+      }
+    }
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    .back_slider {
+      // left: 0;
+      transition-timing-function: ease-in;
+      transition-delay: 0.2s;
+    }
+    .drawer_content {
+      transition-timing-function: ease-in;
+      transition-delay: 0.1s;
+    }
+    &.right {
+      .back_slider {
+        left: 0;
+      }
+      .drawer_content {
+        right: 0;
+      }
+    }
+    &.left {
+      .back_slider {
+        right: 0;
+      }
+      .drawer_content {
+        left: 0;
+      }
+    }
+  }
+  .drawer_toggle {
+    position: absolute;
+    cursor: pointer;
+    font-size: 27px;
+    right: 25px;
+    top: 20px;
+    z-index: 1000;
+    transition: color 0.3s;
+    &:hover {
+      // color: c.$close_color_hover;
+    }
+  }
+
+  .inner_drawer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 6;
+    padding: 100px 0px 50px;
+    transition: left 0.4s;
+    background-color: #f3f3f3;
+    width: 100%;
+    .left_arrow {
+      width: auto;
+      font-size: 18px;
+      position: absolute;
+      left: 22px;
+      top: 20px;
+      cursor: pointer;
+      transition: color 0.3s;
+      &:hover {
+        // color: c.$primary_blue;
+      }
+    }
+  }
+}
+
+@include breakpoint(md) {
+  .drawer {
+    .drawer_content {
+      width: 350px;
+    }
+  }
+}

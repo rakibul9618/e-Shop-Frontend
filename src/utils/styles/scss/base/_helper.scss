@@ -157,12 +157,12 @@
 .flex-wrap { flex-wrap: wrap !important;}
 .flex-nowrap { flex-wrap: nowrap !important;}
 
-.justify_content-start{justify-content: start !important;}
-.justify_content-end{justify-content: end !important;}
-.justify_content-center{justify-content: center !important;}
-.justify_content-between{justify-content: space-between !important;}
-.align_items-center{align-items: center !important;}
-.align_items-start{align-items: start !important;}
+.flex-start{justify-content: start !important;}
+.flex-end{justify-content: end !important;}
+.flex-center{justify-content: center !important;}
+.flex-between{justify-content: space-between !important;}
+.items-center{align-items: center !important;}
+.items-start{align-items: start !important;}
 
 .flex-center {
   display: flex !important;
@@ -286,6 +286,7 @@
 // 
 .relative {position: relative !important;}
 .absolute {position: absolute !important;}
+.fixed {position: fixed !important;}
 
 .inset-0 {
   top: 0px !important;
@@ -312,11 +313,12 @@
 
 
 // 
-//  z-index
+//  cursor
 // 
-
-.pointer {
-  cursor: pointer;
-}
+.pointer {cursor: pointer;}
 
 
+// 
+//  cursor
+// 
+.select-none {user-select: none;}

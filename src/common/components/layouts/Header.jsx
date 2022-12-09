@@ -1,15 +1,18 @@
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import Container from './Container'
 import Navbar from './navbar/Navbar'
-import Link from 'next/link';
+import Drawer from './Drawer';
 
 // logo
 import logo from "@/images/logo.png"
 
 // images
-import feature1 from '@/images/product_feature1.png'
-import feature2 from '@/images/product_feature2.png'
-import feature3 from '@/images/product_feature3.png'
-import feature4 from '@/images/product_feature4.png'
+import product1 from '@/images/product1.png'
+import product2 from '@/images/product2.png'
+import product3 from '@/images/product3.png'
+import product4 from '@/images/product4.png'
 
 import feature from '@/images/feature.png'
 import apparel from '@/images/apparel.png'
@@ -20,25 +23,26 @@ import { BsCart2 } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiOutlineSearch } from 'react-icons/ai';
-import Image from 'next/image';
+import { RiArrowDownSLine } from 'react-icons/ri';
+import { ImArrowRight2 } from 'react-icons/im';
+import { HiPlus } from 'react-icons/hi';
+import { BiMinus } from 'react-icons/bi';
 
 const dropDownItems = [
   {
     "id": 1,
     "title": "Trending this week",
-    "href": "",
-    "icon": ""
+    "href": "/"
   },
   {
     "id": 2,
     "title": "New Arrivals",
-    "href": "",
-    "icon": ""
+    "href": "/"
   },
   {
-    "id": 1,
+    "id": 3,
     "title": "Men's Fashion",
-    "icon": "",
+    "href": false,
     "products": [
       {
         "id": 1,
@@ -61,14 +65,14 @@ const dropDownItems = [
             "href": '/'
           },
           {
-            "id": 3,
+            "id": 4,
             "title": "Trending",
             "href": '/'
           },
         ]
       },
       {
-        "id": 1,
+        "id": 2,
         "title": "Apparel",
         "image": apparel,
         "items": [
@@ -92,10 +96,9 @@ const dropDownItems = [
     ]
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Women's Fashion",
     "href": false,
-    "icon": "",
     "products": [
       {
         "id": 1,
@@ -118,14 +121,14 @@ const dropDownItems = [
             "href": '/'
           },
           {
-            "id": 3,
+            "id": 4,
             "title": "Trending",
             "href": '/'
           },
         ]
       },
       {
-        "id": 1,
+        "id": 2,
         "title": "Apparel",
         "image": apparel,
         "items": [
@@ -169,10 +172,9 @@ const dropDownItems = [
     ],
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Baby Product",
     "href": false,
-    "icon": "",
     "products": [
       {
         "id": 1,
@@ -195,14 +197,14 @@ const dropDownItems = [
             "href": '/'
           },
           {
-            "id": 3,
+            "id": 4,
             "title": "Trending",
             "href": '/'
           },
         ]
       },
       {
-        "id": 1,
+        "id": 2,
         "title": "Apparel",
         "image": apparel,
         "items": [
@@ -231,10 +233,9 @@ const dropDownItems = [
     ]
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Accessories",
     "href": false,
-    "icon": "",
     "products": [
       {
         "id": 1,
@@ -257,14 +258,14 @@ const dropDownItems = [
             "href": '/'
           },
           {
-            "id": 3,
+            "id": 4,
             "title": "Trending",
             "href": '/'
           },
         ]
       },
       {
-        "id": 1,
+        "id": 2,
         "title": "Apparel",
         "image": apparel,
         "items": [
@@ -288,79 +289,257 @@ const dropDownItems = [
     ]
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "Fashion",
-    "href": "",
-    "icon": ""
+    "href": "/"
+  },
+  {
+    "id": 8,
+    "title": "Fashion",
+    "href": "/",
+
+  }
+]
+
+const products = [
+  {
+    "id": 1,
+    "title": "Full Sleeve Tshirt",
+    "count": 1,
+    "price": 150,
+    "image": product1
+  },
+  {
+    "id": 2,
+    "title": "Comfort Unisex Hoodie",
+    "count": 3,
+    "price": 150,
+    "image": product2
+  },
+  {
+    "id": 3,
+    "title": "Stylish Hoodie",
+    "count": 2,
+    "price": 150,
+    "image": product3
+  },
+  {
+    "id": 4,
+    "title": "Stylish Hoodie",
+    "count": 5,
+    "price": 150,
+    "image": product4
+  },
+  {
+    "id": 5,
+    "title": "Full Sleeve Tshirt",
+    "count": 1,
+    "price": 150,
+    "image": product1
+  },
+  {
+    "id": 6,
+    "title": "Full Sleeve Tshirt",
+    "count": 1,
+    "price": 150,
+    "image": product1
   },
   {
     "id": 7,
-    "title": "Fashion",
-    "href": "",
-    "icon": ""
+    "title": "Comfort Unisex Hoodie",
+    "count": 3,
+    "price": 150,
+    "image": product2
+  },
+  {
+    "id": 8,
+    "title": "Stylish Hoodie",
+    "count": 2,
+    "price": 150,
+    "image": product3
+  },
+  {
+    "id": 9,
+    "title": "Stylish Hoodie",
+    "count": 5,
+    "price": 150,
+    "image": product4
+  },
+  {
+    "id": 10,
+    "title": "Full Sleeve Tshirt",
+    "count": 1,
+    "price": 150,
+    "image": product1
   }
 ]
 
 const Header = () => {
-  return (
-    <Container Class="header bg-light_gray" py={false}>
-      <Navbar className="flex-wrap flex-sm-nowrap">
-        <div className=" flex justify_content-between align_items-center w-100 w-sm-auto logo_with_search">
-          <Navbar.Brand href='/' logo={logo} />
-          <AiOutlineSearch className='block none-sm pointer logo_search' />
-        </div>
-        <Navbar.Links className="flex-1 gap-10 gap-sm-50 justify_content-between">
-          <div className="flex align_items-center flex-1 gap-50 links">
-            <div className="relative flex-center gap-10 pointer category">
-              Category <RxHamburgerMenu className='icon' />
-              <ul className="absolute dropdown_items none block-xl">
-                {dropDownItems.map((menu, ind) => (
-                  <li key={ind} className="">
-                    <p className='dropdown_link'>{menu.title}</p>
-                    {menu.products && (
-                      <div className="absolute flex gap-50 department_menu">
-                        {menu.products.map(prod => (
-                          <div className="department_submenu" key={prod.id}>
-                            <h5 className="sm_title">{prod.title}</h5>
-                            <div className="mt-2 image_holder">
-                              <Image src={prod.image} alt="" />
-                            </div>
-                            <ul class="mt-3 submenu_items">
-                              {prod.items.map(item => (
-                                <li key={item.id} className="mt-1">
-                                  <Link className='text-500' href={item.href}>{item.title}</Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex-1 relative search none block-sm">
-              <AiOutlineSearch className='absolute icon' />
-              <input type="text" placeholder='What you are looking for...' />
-            </div>
-          </div>
-          <div className="flex-center gap-20 nav_buttons">
-            <Navbar.Button className="flex-center whitelist_btn icon">
-              <AiOutlineHeart />
-            </Navbar.Button>
-            <Navbar.Button className="flex-center relative cart_btn icon">
-              <BsCart2 />
-              <span className='absolute rounded flex-center'>2</span>
-            </Navbar.Button>
-            <Navbar.Button className="flex-center sign_up">
-              Sign Up
-            </Navbar.Button>
-          </div>
-        </Navbar.Links>
+  const [product, setProduct] = useState([...products])
+  const [showCategory, setShowCategory] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+  const [innerDrawer, setInnerDrawer] = useState(false);
+  const [prodCount, setProdCount] = useState(1)
 
-      </Navbar>
-    </Container >
+  const closeCategory = () => {
+    setShowCategory(false);
+    setInnerDrawer(0);
+  }
+
+  const closeCart = () => {
+    setShowCart(false);
+  }
+  const decrement = (id) => {
+    let list = [...product];
+    if (list[id].count > 0) list[id].count -= 1;
+    setProduct([...list])
+  }
+  const increment = (id) => {
+    let list = [...product];
+    list[id].count += 1;
+    setProduct([...list])
+  }
+
+  useEffect(() => {
+    if (showCategory || showCart) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'scroll';
+    }
+  }, [showCategory, showCart])
+
+  return (
+    <div className="header_container">
+      <Container Class="header bg-light_gray" py={false}>
+        <Navbar className="flex-wrap flex-sm-nowrap">
+          <div className=" flex flex-between align_items-center w-100 w-sm-auto logo_with_search">
+            <Navbar.Brand href='/' logo={logo} />
+            <AiOutlineSearch className='block none-sm pointer logo_search' />
+          </div>
+          <Navbar.Links className="flex-1 gap-10 gap-sm-20 gap-md-50 flex-between">
+            <div className="flex align_items-center flex-1 gap-20 gap-md-50 links">
+              <div className="relative pointer category">
+                <span className='flex-center gap-10' onClick={() => setShowCategory(true)}>Category <RxHamburgerMenu className='icon' /></span>
+                <ul className="absolute dropdown_items none block-xl">
+                  {dropDownItems.map((menu, ind) => (
+                    <li key={ind} className="">
+                      <p className='flex flex-between items-center dropdown_link'>{menu.title}{menu.products && <RiArrowDownSLine className='icon' />}</p>
+                      {menu.products && (
+                        <div className="absolute flex gap-50 department_menu">
+                          {menu.products.map(prod => (
+                            <div className="department_submenu" key={prod.id}>
+                              <h5 className="sm_title">{prod.title}</h5>
+                              <div className="mt-2 image_holder">
+                                <Image src={prod.image} alt="" />
+                              </div>
+                              <ul className="mt-3 submenu_items">
+                                {prod.items.map(item => (
+                                  <li key={item.id} className="mt-1">
+                                    <Link className='text-500' href={item.href}>{item.title}</Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex-1 relative search none block-sm">
+                <AiOutlineSearch className='absolute icon' />
+                <input type="text" placeholder='What you are looking for...' />
+              </div>
+            </div>
+            <div className="flex-center gap-20 nav_buttons" onClick={() => setShowCart(true)}>
+              <Navbar.Button className="flex-center whitelist_btn icon">
+                <AiOutlineHeart />
+              </Navbar.Button>
+              <Navbar.Button className="flex-center relative cart_btn icon">
+                <BsCart2 />
+                <span className='absolute rounded flex-center'>2</span>
+              </Navbar.Button>
+              <Navbar.Button className="flex-center sign_up">
+                Sign Up
+              </Navbar.Button>
+            </div>
+          </Navbar.Links>
+        </Navbar>
+      </Container >
+      <Drawer isActive={showCategory} align="left" className="category_drawer">
+        <Drawer.Content className=''>
+          <Drawer.Toggle onClick={closeCategory} />
+          <ul className="drawer_nav_links">
+            {dropDownItems.map(({ id, title, href, products }) => (
+              <li key={id}>
+                {href ?
+                  <Link href={href} className='drawer_nav_link'>{title}</Link>
+                  :
+                  <p className='flex items-center flex-between a drawer_nav_link' onClick={() => setInnerDrawer(id)}>
+                    {title} <ImArrowRight2 className='icon' />
+                  </p>
+                }
+                {products && (
+                  <Drawer.Inner Class='' activeNumber={innerDrawer} id={id} onArrowClick={() => setInnerDrawer(false)} >
+                    {products.map(product => {
+                      return (
+                        <ul className="drawer_dropdown_links" key={product.id}>
+                          {product.items.map(item => (
+                            <li key={item.id}>
+                              <Link href={item.href} className='drawer_dropdown_link'>{item.title}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )
+                    })}
+                  </Drawer.Inner>
+                )}
+              </li>
+            ))}
+          </ul>
+        </Drawer.Content>
+      </Drawer>
+      <Drawer isActive={showCart} align="right" className="cart_drawer">
+        <Drawer.Content className=' cart_content'>
+          <Drawer.Toggle onClick={closeCart} />
+          <div className="relative">
+            <h4 className="pl-3 sm_title">Cart <span>(5)</span></h4>
+            <ul className="grid gap-30 cart_list">
+              {product.map(({ id, title, price, count, image }, ind) => (
+                <li className="grid gap-20 pb-4 cart_item" key={id}>
+                  <div className="image_holder">
+                    <Image src={image} alt="" />
+                  </div>
+                  <div className="w-100 content">
+                    <p className="title_des">{title}</p>
+                    <div className="flex flex-between items-center mt-2 amount">
+                      <p className='flex items-center gap-10 title_des select-none count'>
+                        <BiMinus onClick={() => decrement(ind)} className="pointer icon" />
+                        {count}
+                        <HiPlus onClick={() => increment(ind)} className="pointer icon" />
+                      </p>
+                      <h6 className="sm_title">${price}</h6>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="fixed cart_footer">
+              <div className="flex flex-between sub_total">
+                <h5 className="sm_title">subtotal</h5>
+                <h5 className="sm_title">$570</h5>
+              </div>
+              <div className="flex gap-20 flex-between mt-1">
+                <Link href='/' className='btn text-center'>Check out</Link>
+                <Link href='/' className='btn text-center'>View cart</Link>
+              </div>
+            </div>
+          </div>
+        </Drawer.Content>
+      </Drawer>
+    </div >
+
   )
 }
 

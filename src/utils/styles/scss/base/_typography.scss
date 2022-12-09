@@ -1,7 +1,6 @@
 @use '../mixins/breakpoint' as *;
 
-
-.title_description {
+.title_des {
   font-size: 20px;
   font-weight: 500;
   line-height: 30px;
@@ -52,6 +51,8 @@
     }
   }
 }
+
+
 
 .lg_title {
   font-weight: 600;
@@ -137,12 +138,31 @@
 
 .sm_title {
   font-weight: 600;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 20px;
+  line-height: 30px;
   @include breakpoint(lg) {
     & {
-      font-size: 19px;
-      line-height: 30px;
+      font-size: 22px;
+      line-height: 32px;
+    }
+  }
+
+  @include breakpoint(3xl) {
+    & {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+}
+
+.xs_title {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 30px;
+  @include breakpoint(lg) {
+    & {
+      font-size: 18px;
+      line-height: 32px;
     }
   }
 
@@ -153,14 +173,3 @@
     }
   }
 }
-
-.xs_title {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-
-
-
-
