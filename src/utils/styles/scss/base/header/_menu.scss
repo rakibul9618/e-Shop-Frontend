@@ -165,6 +165,7 @@
 }
 
 .dropdown_items {
+  z-index: 999;
   background-color: C.$white;
   color: C.$black;
   top: 80px;
@@ -244,13 +245,20 @@
   }
 }
 
+@include breakpoint(xl) {
+  .category_drawer {
+    display: none;
+  }
+}
+
 .cart_drawer {
   .cart_content {
-    padding: 20px 0px 0px !important;
-    width: 400px !important;
+    padding: 20px 0px !important;
+    width: 100% !important;
+    overflow: hidden !important;
     .cart_list {
       padding: 20px 25px;
-      height: 90vh;
+      height: 99vh;
       overflow-y: auto;
       .cart_item {
         grid-template-columns: 100px auto;
@@ -261,12 +269,30 @@
         }
       }
     }
+   
     .image_holder {
       width: 100px;
       height: 100px;
       background-color: #efefef;
       padding: 4px;
       border-radius: 10px;
+      .delete {
+        height: 31px;
+        width: 31px;
+        background-color: #f6f7fb;
+        border: 2px solid C.$white;
+        border-radius: 50%;
+        font-size: 12px;
+        color: C.$black;
+        top: -15px;
+        left: -10px;
+        font-size: 18px;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: C.$primary;
+          color: C.$white;
+        }
+      }
     }
     .count {
       background-color: #efefef;
@@ -279,15 +305,13 @@
     }
   }
   .cart_footer {
-    width: 400px;
-    bottom: 0;
-    // left: 0;
+    bottom: 0px;
+    left: 0;
     right: 0;
     background-color: C.$white;
-    padding: 10px 25px 10px;
+    padding: 10px 0px 50px;
     .sub_total {
       border-top: 1px solid #efefef;
-      // border-bottom: 1px solid #efefef;
       padding: 15px 0;
     }
     .btn {
@@ -296,12 +320,35 @@
       width: 100%;
       padding: 10px 15px;
       border-radius: 5px;
+      border: 1px solid transparent;
+      transition: all 0.4s;
       &:first-child {
         background-color: C.$primary;
       }
       &:last-child {
         background-color: C.$secondary;
       }
+      &:hover {
+        background-color: transparent;
+
+        &:first-child {
+          color: C.$primary;
+          border: 1px solid C.$primary;
+        }
+        &:last-child {
+          color: C.$secondary;
+          border: 1px solid C.$secondary;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint(sm) {
+  .cart_drawer {
+    .cart_content {
+      width: 450px !important;
+      
     }
   }
 }

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from './Container'
 import Navbar from './navbar/Navbar'
 import Drawer from './Drawer';
+import { breakpointContext } from '@/provider/BreakpointProvider';
 
 // logo
 import logo from "@/images/logo.png"
@@ -13,7 +14,6 @@ import product1 from '@/images/product1.png'
 import product2 from '@/images/product2.png'
 import product3 from '@/images/product3.png'
 import product4 from '@/images/product4.png'
-
 import feature from '@/images/feature.png'
 import apparel from '@/images/apparel.png'
 
@@ -27,6 +27,7 @@ import { RiArrowDownSLine } from 'react-icons/ri';
 import { ImArrowRight2 } from 'react-icons/im';
 import { HiPlus } from 'react-icons/hi';
 import { BiMinus } from 'react-icons/bi';
+import { RxCross2 } from 'react-icons/rx';
 
 const dropDownItems = [
   {
@@ -311,7 +312,7 @@ const products = [
   },
   {
     "id": 2,
-    "title": "Comfort Unisex Hoodie",
+    "title": "Comfort Unisex Hoodie Comfort Unisex Hoodie Comfort Unisex Hoodie Comfort Unisex Hoodie",
     "count": 3,
     "price": 150,
     "image": product2
@@ -380,6 +381,7 @@ const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const [innerDrawer, setInnerDrawer] = useState(false);
   const [prodCount, setProdCount] = useState(1)
+  const { xlAndUp } = useContext(breakpointContext);
 
   const closeCategory = () => {
     setShowCategory(false);
@@ -401,12 +403,18 @@ const Header = () => {
   }
 
   useEffect(() => {
-    if (showCategory || showCart) {
+    if (showCart) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'scroll';
     }
-  }, [showCategory, showCart])
+  }, [showCart])
+
+  useEffect(() => {
+    if (xlAndUp && showCategory) {
+      setShowCategory(false)
+    }
+  }, [xlAndUp])
 
   return (
     <div className="header_container">
@@ -508,12 +516,15 @@ const Header = () => {
             <ul className="grid gap-30 cart_list">
               {product.map(({ id, title, price, count, image }, ind) => (
                 <li className="grid gap-20 pb-4 cart_item" key={id}>
-                  <div className="image_holder">
+                  <div className="relative image_holder">
                     <Image src={image} alt="" />
+                    <div className="absolute flex-center pointer delete">
+                      <RxCross2 />
+                    </div>
                   </div>
                   <div className="w-100 content">
-                    <p className="title_des">{title}</p>
-                    <div className="flex flex-between items-center mt-2 amount">
+                    <p className="title_des word-dots cart_title">{title}</p>
+                    <div className="flex flex-between flex-wrap gap-20 items-center mt-2 amount">
                       <p className='flex items-center gap-10 title_des select-none count'>
                         <BiMinus onClick={() => decrement(ind)} className="pointer icon" />
                         {count}
@@ -524,17 +535,18 @@ const Header = () => {
                   </div>
                 </li>
               ))}
+              <li className="sticky cart_footer">
+                <div className="flex flex-between sub_total">
+                  <h5 className="sm_title">subtotal</h5>
+                  <h5 className="sm_title">$570</h5>
+                </div>
+                <div className="flex gap-20 flex-between mt-1">
+                  <Link href='/' className='btn text-center'>Check out</Link>
+                  <Link href='/' className='btn text-center'>View cart</Link>
+                </div>
+              </li>
             </ul>
-            <div className="fixed cart_footer">
-              <div className="flex flex-between sub_total">
-                <h5 className="sm_title">subtotal</h5>
-                <h5 className="sm_title">$570</h5>
-              </div>
-              <div className="flex gap-20 flex-between mt-1">
-                <Link href='/' className='btn text-center'>Check out</Link>
-                <Link href='/' className='btn text-center'>View cart</Link>
-              </div>
-            </div>
+
           </div>
         </Drawer.Content>
       </Drawer>

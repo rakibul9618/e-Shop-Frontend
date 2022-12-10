@@ -8,6 +8,7 @@
       "@/utils/*": ["src/common/utils/*"],
       "@/styles/*": ["src/utils/styles/*"],
       "@/scss/*": ["src/utils/styles/scss/*"],
+      "@/provider/*": ["src/utils/provider/*"],
       "@/images/*": ["src/utils/images/*"],
       "@/modules/*": ["src/modules/*"],
     }
