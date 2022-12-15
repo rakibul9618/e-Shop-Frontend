@@ -1,0 +1,34 @@
+@use '../config/variables' as C;
+@use '../mixins/breakpoint' as *;
+
+.cta {
+  .cta_wrapper {
+    padding: 100px 20px 85px;
+    border-radius: 6px;
+  }
+  .upper_title {
+    .icon {
+      background-color: C.$primary;
+      color: C.$white;
+      width: 28px;
+      height: 28px;
+    }
+  }
+  form {
+    .icon {
+      top: 50%;
+      left: 15px;
+      transform: translate(0, -50%);
+    }
+    .input_area {
+      max-width: 390px;
+      min-width: 200px;
+    }
+  }
+  //   media query start here
+  @include breakpoint(sm) {
+    .cta_wrapper {
+      padding: 100px 107px 85px;
+    }
+  }
+}

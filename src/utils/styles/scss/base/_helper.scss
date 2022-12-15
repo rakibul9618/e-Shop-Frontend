@@ -1,7 +1,7 @@
 @use '../mixins/breakpoint' as *;
 @use '../config/variables' as C;
 
-// 
+//
 // Width //
 //
 @for $i from 0 through 10 {
@@ -11,7 +11,9 @@
 }
 
 @include breakpoint(sm) {
-  .w-sm-auto{width: auto !important;}
+  .w-sm-auto {
+    width: auto !important;
+  }
   @for $i from 0 through 10 {
     .w-sm-#{$i * 10} {
       width: #{$i * 10%} !important;
@@ -35,7 +37,6 @@
   }
 }
 
-
 @include breakpoint(xl) {
   @for $i from 0 through 10 {
     .w-xl-#{$i * 10} {
@@ -52,145 +53,249 @@
   }
 }
 
-.w-auto {width: auto !important;}
+.w-auto {
+  width: auto !important;
+}
 
 @include breakpoint(sm) {
-  .w-sm-auto {width: auto !important;}
+  .w-sm-auto {
+    width: auto !important;
+  }
 }
 
 @include breakpoint(md) {
-  .w-md-auto {width: auto !important;}
+  .w-md-auto {
+    width: auto !important;
+  }
 }
 
 @include breakpoint(lg) {
-  .w-lg-auto {width: auto !important;}
+  .w-lg-auto {
+    width: auto !important;
+  }
 }
 
 @include breakpoint(xl) {
-  .w-xl-auto {width: auto !important;}
+  .w-xl-auto {
+    width: auto !important;
+  }
 }
 
-// 
+//
 // height //
 //
-.h-100 {height: 100% !important;}
+.h-100 {
+  height: 100% !important;
+}
 
-
-// 
+//
 // block //
 //
-.block { display: block !important;}
-.none { display: none !important;}
-.inline_block { display: inline_block !important;}
+.block {
+  display: block !important;
+}
+.none {
+  display: none !important;
+}
+.inline_block {
+  display: inline_block !important;
+}
 
 @include breakpoint(sm) {
-  .none-sm { display: none !important;}
-  .block-sm { display: block !important;}
-}
-
-@include breakpoint(xl) {
-  .none-xl { display: none !important;}
-  .block-xl { display: block !important;}
-}
-
-// 
-// Grid //
-//
-.grid { display: grid !important;}
-.justify_items-center {justify-items: center !important;}
-.justify_items-start {justify-items: start !important;}
-.justify_items-end {justify-items: end !important;}
-.align_items-end {align-items: end !important;}
-.align_items-start {align-items: start !important;}
-.align_items-center {align-items: center !important;}
-.place-center {place-items: center !important;}
-.align_self-center {align-self: center !important;}
-
-@for $i from 0 through 4 {
-  .col-#{$i} {
-    grid-template-columns: repeat(#{$i},minmax(0,1fr)) !important;
+  .none-sm {
+    display: none !important;
+  }
+  .block-sm {
+    display: block !important;
   }
 }
 
+@include breakpoint(xl) {
+  .none-xl {
+    display: none !important;
+  }
+  .block-xl {
+    display: block !important;
+  }
+}
+
+//
+// border-radius
+//
+
+@for $i from 1 through 5 {
+  .radius-#{ $i } {
+    border-radius: #{$i / 2}rem !important;
+  }
+}
+.radius-rounded {
+  border-radius: 50% !important;
+}
+
+//
+// Grid
+//
+.grid {
+  display: grid !important;
+}
+.justify_items-center {
+  justify-items: center !important;
+}
+.justify_items-start {
+  justify-items: start !important;
+}
+.justify_items-end {
+  justify-items: end !important;
+}
+.align_items-end {
+  align-items: end !important;
+}
+.align_items-start {
+  align-items: start !important;
+}
+.align_items-center {
+  align-items: center !important;
+}
+.place-center {
+  place-items: center !important;
+}
+.align_self-center {
+  align-self: center !important;
+}
+
+@for $i from 0 through 6 {
+  .col-#{$i} {
+    grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
+  }
+}
+
+@include breakpoint(xs) {
+  @for $i from 0 through 6 {
+    .col-xs-#{$i} {
+      grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
+    }
+  }
+}
 
 @include breakpoint(sm) {
-  @for $i from 0 through 4 {
+  @for $i from 0 through 6 {
     .col-sm-#{$i} {
-      grid-template-columns: repeat(#{$i},minmax(0,1fr)) !important;
+      grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
     }
   }
 }
 
 @include breakpoint(md) {
-  @for $i from 0 through 4 {
+  @for $i from 0 through 6 {
     .col-md-#{$i} {
-      grid-template-columns: repeat(#{$i},minmax(0,1fr)) !important;
+      grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
     }
   }
 }
 
 @include breakpoint(lg) {
-  @for $i from 0 through 4 {
+  @for $i from 0 through 6 {
     .col-lg-#{$i} {
-      grid-template-columns: repeat(#{$i},minmax(0,1fr)) !important;
+      grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
     }
   }
 }
-
 
 @include breakpoint(xl) {
-  @for $i from 0 through 4 {
+  @for $i from 0 through 6 {
     .col-xl-#{$i} {
-      grid-template-columns: repeat(#{$i},minmax(0,1fr)) !important;
+      grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
     }
   }
 }
 
-
-// 
+//
 // Flex //
 //
-.flex { display: flex !important;}
-.flex-1 { flex: 1 1 0% !important;}
-.flex-col { flex-direction: column !important;}
-.flex-row { flex-direction: row !important;}
-.flex-wrap { flex-wrap: wrap !important;}
-.flex-nowrap { flex-wrap: nowrap !important;}
-
-.flex-start{justify-content: start !important;}
-.flex-end{justify-content: end !important;}
-.flex-center{justify-content: center !important;}
-.flex-between{justify-content: space-between !important;}
-.items-center{align-items: center !important;}
-.items-start{align-items: start !important;}
-
-.flex-center {
+.flex {
   display: flex !important;
-  align-items: center !important;
+}
+.flex-1 {
+  flex: 1 1 0% !important;
+}
+.flex-col {
+  flex-direction: column !important;
+}
+.flex-row {
+  flex-direction: row !important;
+}
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+.flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.flex-start {
+  justify-content: start !important;
+}
+.flex-end {
+  justify-content: end !important;
+}
+.flex-center {
   justify-content: center !important;
+}
+.flex-between {
+  justify-content: space-between !important;
+}
+.items-center {
+  align-items: center !important;
+}
+.items-start {
+  align-items: flex-start !important;
+}
+
+.flex-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @include breakpoint(sm) {
-  .flex-sm-wrap { flex-wrap: wrap !important;}
-  .flex-sm-nowrap { flex-wrap: nowrap !important;}
+  .flex-sm-wrap {
+    flex-wrap: wrap !important;
+  }
+  .flex-sm-nowrap {
+    flex-wrap: nowrap !important;
+  }
 }
 
 @include breakpoint(md) {
-  .flex-md-wrap { flex-wrap: wrap !important;}
-  .flex-md-nowrap { flex-wrap: nowrap !important;}
+  .flex-md-wrap {
+    flex-wrap: wrap !important;
+  }
+  .flex-md-nowrap {
+    flex-wrap: nowrap !important;
+  }
+  .flex-md-between {
+    justify-content: space-between !important;
+  }
 }
 
 @include breakpoint(lg) {
-  .flex-lg-wrap { flex-wrap: wrap !important;}
-  .flex-lg-nowrap { flex-wrap: nowrap !important;}
+  .flex-lg-wrap {
+    flex-wrap: wrap !important;
+  }
+  .flex-lg-nowrap {
+    flex-wrap: nowrap !important;
+  }
 }
 
 @include breakpoint(xl) {
-  .flex-xl-wrap { flex-wrap: wrap !important;}
-  .flex-xl-nowrap { flex-wrap: nowrap !important;}
+  .flex-xl-wrap {
+    flex-wrap: wrap !important;
+  }
+  .flex-xl-nowrap {
+    flex-wrap: nowrap !important;
+  }
 }
 
-// 
+//
 // Spacing - gap //
 //
 
@@ -199,7 +304,6 @@
     gap: #{$i * 5}px !important;
   }
 }
-
 
 @for $i from 0 through 20 {
   .gap_col-#{$i * 5} {
@@ -237,57 +341,104 @@
   }
 }
 
-// 
+//
 //  Text
-// 
-.uppercase {text-transform: uppercase !important;}
-.capitalize {text-transform: capitalize !important;}
- 
-.text-400 {font-weight: 400 !important;}
-.text-500 { font-weight: 500 !important;}
-.text-700 {font-weight: 700 !important;}
+//
+.uppercase {
+  text-transform: uppercase !important;
+}
+.capitalize {
+  text-transform: capitalize !important;
+}
 
-.text-center {text-align: center !important;}
-.text-start {text-align: start !important;}
+.text-400 {
+  font-weight: 400 !important;
+}
+.text-500 {
+  font-weight: 500 !important;
+}
+.text-700 {
+  font-weight: 700 !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+.text-start {
+  text-align: start !important;
+}
 
 @include breakpoint(md) {
-  .text-md-center {text-align: center !important;}
-  .text-md-start {text-align: start !important;}
+  .text-md-center {
+    text-align: center !important;
+  }
+  .text-md-start {
+    text-align: start !important;
+  }
 }
 @include breakpoint(lg) {
-  .text-lg-center {text-align: center !important;}
-  .text-lg-start {text-align: start !important;}
+  .text-lg-center {
+    text-align: center !important;
+  }
+  .text-lg-start {
+    text-align: start !important;
+  }
 }
 @include breakpoint(xl) {
-  .text-xl-center {text-align: center !important;}
-  .text-xl-start {text-align: start !important;}
+  .text-xl-center {
+    text-align: center !important;
+  }
+  .text-xl-start {
+    text-align: start !important;
+  }
 }
 
 // colors
 
-.text-primary {color: C.$primary !important;}
-.text-secondary {color: C.$secondary !important;}
-.text-gray {color: C.$gray !important;}
+.text-primary {
+  color: C.$primary !important;
+}
+.text-secondary {
+  color: C.$secondary !important;
+}
+.text-gray {
+  color: C.$gray !important;
+}
+.text-white {
+  color: C.$white !important;
+}
 
 // background
 
-.bg-primary { background-color: C.$primary !important;}
-.bg-light_gray { background-color: C.$light_gray !important;}
+.bg-primary {
+  background-color: C.$primary !important;
+}
+.bg-light_gray {
+  background-color: C.$light_gray !important;
+}
 
-
-// 
+//
 //  border-radius
-// 
-.rounded {border-radius: 50% !important;}
+//
+.rounded {
+  border-radius: 50% !important;
+}
 
-
-// 
+//
 //  position
-// 
-.relative {position: relative !important;}
-.absolute {position: absolute !important;}
-.fixed {position: fixed !important;}
-.sticky {position: sticky !important;}
+//
+.relative {
+  position: relative !important;
+}
+.absolute {
+  position: absolute !important;
+}
+.fixed {
+  position: fixed !important;
+}
+.sticky {
+  position: sticky !important;
+}
 
 .inset-0 {
   top: 0px !important;
@@ -302,9 +453,9 @@
   transform: translate(-50%, -50%) !important;
 }
 
-// 
+//
 //  z-index
-// 
+//
 
 @for $i from 0 through 10 {
   .z-#{$i} {
@@ -312,23 +463,59 @@
   }
 }
 
-
-// 
+//
 //  cursor
-// 
-.pointer {cursor: pointer;}
+//
+.pointer {
+  cursor: pointer;
+}
 
-
-// 
-//  cursor
-// 
-.select-none {user-select: none;}
-
+// others
+.overflow-hidden {
+  overflow: hidden;
+}
 
 .word-dots {
-    display: -webkit-box;
-   -webkit-line-clamp: 1;
-   -webkit-box-orient: vertical;
-   overflow: hidden;
-   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.relative-up {
+  position: relative;
+  z-index: 5;
+}
+
+.inset-1 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.img-cover-center {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.img-cover-right {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: right;
+}
+
+.black-layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.select-none {
+  user-select: none;
 }

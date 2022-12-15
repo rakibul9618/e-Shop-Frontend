@@ -76,8 +76,6 @@
       }
       .sign_up {
         padding: 8px 10px;
-        background-color: C.$primary;
-        color: C.$white;
         width: max-content;
         overflow: hidden;
       }
@@ -91,15 +89,17 @@
           height: 45px;
           width: 45px;
           background-color: C.$pink;
-          transform: scale(0);
           border-radius: 50%;
           z-index: -1;
           transition: all 0.4s;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) scale(0);
         }
         &:hover {
           color: C.$white;
-          &::after {
-            transform: scale(1);
+          &:not(:last-child)::after {
+            transform: translate(-50%, -50%) scale(1);
           }
         }
       }
@@ -131,7 +131,7 @@
       }
       .nav_buttons {
         .sign_up {
-          padding: 12px 15px;
+          padding: 8px 15px;
         }
       }
     }
@@ -269,7 +269,7 @@
         }
       }
     }
-   
+
     .image_holder {
       width: 100px;
       height: 100px;
@@ -348,7 +348,6 @@
   .cart_drawer {
     .cart_content {
       width: 450px !important;
-      
     }
   }
 }

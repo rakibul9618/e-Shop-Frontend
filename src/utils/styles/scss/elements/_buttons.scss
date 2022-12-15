@@ -1,0 +1,39 @@
+@use '../config/variables' as C;
+
+.primary-btn {
+  background-color: C.$primary !important;
+  color: C.$white !important;
+  border: 1px solid transparent !important;
+  transition: all 0.4s !important;
+  &:hover {
+    background-color: transparent !important;
+    color: C.$primary !important;
+    border: 1px solid C.$primary !important;
+  }
+}
+
+.white-btn {
+  background-color: C.$white !important;
+  color: C.$black !important;
+  border: 1px solid transparent !important;
+  transition: all 0.4s !important;
+  &:hover {
+    background-color: transparent !important;
+    color: C.$white !important;
+    border: 1px solid C.$white !important;
+  }
+}
+
+.submit_btn_cta {
+  border-radius: 6px !important;
+  background-color: C.$black;
+  color: C.$white;
+  padding: 5px 30px;
+  border: 1px solid transparent;
+  transition: all 0.4s;
+  &:hover {
+    border-color: C.$black;
+    color: C.$black;
+    background-color: transparent;
+  }
+}

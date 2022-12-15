@@ -6,6 +6,14 @@
 @use 'base/typography';
 
 //  Header
-@use 'base/header/dropdown';
 @use 'base/header/menu';
 @use 'base/header/drawer';
+
+// elements
+@use './elements/buttons';
+@use './elements/cart';
+@use './elements/swiper';
+@use './elements/cta';
+
+// components
+@use './components/offers'

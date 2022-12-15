@@ -1,0 +1,14 @@
+@use '../config/variables' as C;
+
+.swiper_arrow {
+  background-color: C.$light_gray;
+  padding: 15px;
+  border-radius: 6px;
+  color: C.$gray_text;
+  transition: all 0.4s;
+  &:hover {
+    border-radius: 50%;
+    background-color: C.$gray;
+    color: C.$black;
+  }
+}

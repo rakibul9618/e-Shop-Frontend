@@ -2,6 +2,7 @@
     Layout
 -----------------------------------------*/
 @use '../mixins/breakpoint' as *;
+@use '../config/variables' as C;
 
 // Custom container start here
 .flex_container {
@@ -50,4 +51,9 @@
       padding: 0 24px;
     }
   }
+}
+
+.footer {
+  background-color: C.$black;
+  color: C.$white;
 }

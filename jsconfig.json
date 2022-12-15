@@ -9,7 +9,7 @@
       "@/styles/*": ["src/utils/styles/*"],
       "@/scss/*": ["src/utils/styles/scss/*"],
       "@/provider/*": ["src/utils/provider/*"],
-      "@/images/*": ["src/utils/images/*"],
+      "@/images/*": ["/public/images/*"],
       "@/modules/*": ["src/modules/*"],
     }
   }

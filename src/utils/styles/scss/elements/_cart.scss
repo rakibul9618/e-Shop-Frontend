@@ -1,0 +1,54 @@
+@use '../config/variables' as C;
+@use '../mixins/breakpoint' as *;
+
+.category_cart {
+  display: block;
+  background-color: C.$light_gray;
+  border-radius: 12px;
+  padding: 15px 20px;
+  transition: transform 0.5s;
+  img {
+    transition: transform 0.4s;
+  }
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.product_cart {
+  .image_holder {
+    background-color: C.$light_gray;
+    transition: all 0.4s;
+    img {
+      transition: all 0.4s;
+    }
+  }
+  .offer_amount {
+    top: 15px;
+    right: 5px;
+    background-color: C.$primary;
+    line-height: 1;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px 0 rgba(53, 119, 240, 20%);
+  }
+  .offer_price {
+    color: C.$gray_text;
+    text-decoration: line-through;
+    font-size: 16px;
+    align-self: flex-end;
+  }
+  &:hover {
+    .image_holder {
+      box-shadow: 0px 1px 28px 7px #f3f1f8;
+      img {
+        transform: scale(1.08);
+      }
+    }
+  }
+}

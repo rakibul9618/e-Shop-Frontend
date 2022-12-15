@@ -425,9 +425,9 @@ const Header = () => {
             <AiOutlineSearch className='block none-sm pointer logo_search' />
           </div>
           <Navbar.Links className="flex-1 gap-10 gap-sm-20 gap-md-50 flex-between">
-            <div className="flex align_items-center flex-1 gap-20 gap-md-50 links">
+            <div className="flex items-center flex-1 gap-20 gap-md-50 links">
               <div className="relative pointer category">
-                <span className='flex-center gap-10' onClick={() => setShowCategory(true)}>Category <RxHamburgerMenu className='icon' /></span>
+                <span className='flex-middle gap-10' onClick={() => setShowCategory(true)}>Category <RxHamburgerMenu className='icon' /></span>
                 <ul className="absolute dropdown_items none block-xl">
                   {dropDownItems.map((menu, ind) => (
                     <li key={ind} className="">
@@ -460,15 +460,15 @@ const Header = () => {
                 <input type="text" placeholder='What you are looking for...' />
               </div>
             </div>
-            <div className="flex-center gap-20 nav_buttons" onClick={() => setShowCart(true)}>
-              <Navbar.Button className="flex-center whitelist_btn icon">
+            <div className="flex-middle gap-20 nav_buttons" onClick={() => setShowCart(true)}>
+              <Navbar.Button className="flex-middle whitelist_btn icon">
                 <AiOutlineHeart />
               </Navbar.Button>
-              <Navbar.Button className="flex-center relative cart_btn icon">
+              <Navbar.Button className="flex-middle relative cart_btn icon">
                 <BsCart2 />
-                <span className='absolute rounded flex-center'>2</span>
+                <span className='absolute rounded flex-middle'>2</span>
               </Navbar.Button>
-              <Navbar.Button className="flex-center sign_up">
+              <Navbar.Button className="flex-middle primary-btn radius-1 sign_up">
                 Sign Up
               </Navbar.Button>
             </div>
@@ -518,7 +518,7 @@ const Header = () => {
                 <li className="grid gap-20 pb-4 cart_item" key={id}>
                   <div className="relative image_holder">
                     <Image src={image} alt="" />
-                    <div className="absolute flex-center pointer delete">
+                    <div className="absolute flex-middle pointer delete">
                       <RxCross2 />
                     </div>
                   </div>
