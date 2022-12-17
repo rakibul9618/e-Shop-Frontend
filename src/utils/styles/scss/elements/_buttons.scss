@@ -12,6 +12,17 @@
   }
 }
 
+.secondary-btn {
+  background-color: C.$pink !important;
+  color: C.$white !important;
+  border: 1px solid transparent !important;
+  transition: all 0.4s !important;
+  &:hover {
+    background-color: C.$white !important;
+    color: C.$pink !important;
+  }
+}
+
 .white-btn {
   background-color: C.$white !important;
   color: C.$black !important;

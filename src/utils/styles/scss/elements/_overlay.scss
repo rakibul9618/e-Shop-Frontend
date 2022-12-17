@@ -1,0 +1,129 @@
+@use '../config/variables' as C;
+@use '../mixins/breakpoint' as *;
+
+.overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    .overlay_content {
+      transform: translateY(0px);
+    }
+  }
+  .container {
+    align-items: center;
+  }
+  .overlay_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-color: C.$white;
+    transform: translateY(-50px);
+    transition: all 0.5s;
+    .header_top {
+      padding: 15px 30px;
+      border-bottom: 1px solid C.$gray;
+      font-size: 26px;
+      transition: all 0.5s ease-in-out 0.2s;
+      .icon {
+        transition: all 0.5s;
+        &:hover {
+          color: C.$primary;
+        }
+      }
+    }
+    .overlay_body {
+      padding: 30px 30px 60px 30px;
+      overflow-y: auto;
+    }
+  }
+
+  .product_content {
+    overflow-x: hidden;
+    overflow-y: auto;
+    .image_slider {
+      overflow-x: hidden;
+      .mySwiper2 {
+        .image_holder {
+          max-width: 550px;
+        }
+      }
+      .mySwiper {
+        .image_holder {
+          max-width: 100px;
+        }
+      }
+    }
+
+    // product details start here
+    .product_details {
+      .review {
+        border-bottom: 1px solid C.$gray;
+        .stars {
+          color: #ffdc60;
+        }
+      }
+      .features {
+        .check {
+          font-size: 14px;
+        }
+      }
+      .size_wrapper {
+        .size {
+          li {
+            border: 2px solid C.$light_gray;
+            background: #fff;
+            border-radius: 50%;
+            min-width: 44px;
+            min-height: 44px;
+            text-transform: uppercase;
+            font-weight: 500;
+            line-height: 24px;
+            cursor: pointer;
+            transition: all 0.4s;
+            &:hover {
+              border-color: C.$gray_text;
+            }
+          }
+        }
+      }
+      .action_cart {
+        .primary-btn {
+          padding: 5px 15px;
+          border-radius: 6px;
+        }
+        .whitelist {
+          background-color: #efefef;
+          font-size: 22px;
+          border-radius: 6px;
+          padding: 5px 8px;
+          transition: all 0.4s;
+          &:hover {
+            background-color: C.$primary;
+            color: C.$white;
+          }
+        }
+      }
+    }
+    // product details end here
+
+    // media query start here
+    @include breakpoint(md) {
+      grid-template-columns: 40% auto;
+    }
+  }
+}

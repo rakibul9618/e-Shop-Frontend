@@ -27,7 +27,7 @@ const Cta = ({ image }) => {
                             <div className="absolute flex-middle icon">
                                 <IoMailUnreadSharp />
                             </div>
-                            <input type="text" class="input_field mt-0 pl-5" />
+                            <input type="text" className="input_field mt-0 pl-5" />
                         </div>
                         <button type="submit" className='flex-middle submit_btn_cta'>Subscribe</button>
                     </form>

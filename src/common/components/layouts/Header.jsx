@@ -28,6 +28,7 @@ import { ImArrowRight2 } from 'react-icons/im';
 import { HiPlus } from 'react-icons/hi';
 import { BiMinus } from 'react-icons/bi';
 import { RxCross2 } from 'react-icons/rx';
+import Count from '../shared/Count';
 
 const dropDownItems = [
   {
@@ -404,9 +405,9 @@ const Header = () => {
 
   useEffect(() => {
     if (showCart) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflowY = 'hidden';
     } else {
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflowY = 'scroll';
     }
   }, [showCart])
 
@@ -460,11 +461,11 @@ const Header = () => {
                 <input type="text" placeholder='What you are looking for...' />
               </div>
             </div>
-            <div className="flex-middle gap-20 nav_buttons" onClick={() => setShowCart(true)}>
+            <div className="flex-middle gap-20 nav_buttons" >
               <Navbar.Button className="flex-middle whitelist_btn icon">
                 <AiOutlineHeart />
               </Navbar.Button>
-              <Navbar.Button className="flex-middle relative cart_btn icon">
+              <Navbar.Button className="flex-middle relative cart_btn icon" onClick={() => setShowCart(true)}>
                 <BsCart2 />
                 <span className='absolute rounded flex-middle'>2</span>
               </Navbar.Button>
@@ -525,11 +526,7 @@ const Header = () => {
                   <div className="w-100 content">
                     <p className="title_des word-dots cart_title">{title}</p>
                     <div className="flex flex-between flex-wrap gap-20 items-center mt-2 amount">
-                      <p className='flex items-center gap-10 title_des select-none count'>
-                        <BiMinus onClick={() => decrement(ind)} className="pointer icon" />
-                        {count}
-                        <HiPlus onClick={() => increment(ind)} className="pointer icon" />
-                      </p>
+                      <Count increment={() => increment(ind)} decrement={() => decrement(ind)} count={count} />
                       <h6 className="sm_title">${price}</h6>
                     </div>
                   </div>

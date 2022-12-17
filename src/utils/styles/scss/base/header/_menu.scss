@@ -294,15 +294,6 @@
         }
       }
     }
-    .count {
-      background-color: #efefef;
-      padding: 5px 10px;
-      border-radius: 5px;
-
-      .icon {
-        font-size: 16px;
-      }
-    }
   }
   .cart_footer {
     bottom: 0px;
@@ -341,6 +332,16 @@
         }
       }
     }
+  }
+}
+
+.count {
+  background-color: #efefef;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  .icon {
+    font-size: 16px;
   }
 }
 
