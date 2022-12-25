@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Container from './Container'
 import Navbar from './navbar/Navbar'
 import Drawer from './Drawer';
+import Count from '../shared/Count';
 import { breakpointContext } from '@/provider/BreakpointProvider';
 
 // logo
@@ -28,7 +29,6 @@ import { ImArrowRight2 } from 'react-icons/im';
 import { HiPlus } from 'react-icons/hi';
 import { BiMinus } from 'react-icons/bi';
 import { RxCross2 } from 'react-icons/rx';
-import Count from '../shared/Count';
 
 const dropDownItems = [
   {
@@ -428,7 +428,9 @@ const Header = () => {
           <Navbar.Links className="flex-1 gap-10 gap-sm-20 gap-md-50 flex-between">
             <div className="flex items-center flex-1 gap-20 gap-md-50 links">
               <div className="relative pointer category">
-                <span className='flex-middle gap-10' onClick={() => setShowCategory(true)}>Category <RxHamburgerMenu className='icon' /></span>
+                <span className='flex-middle gap-10  category_title ' onClick={() => setShowCategory(true)}>
+                  <span className='none block-sm'>Category</span> <RxHamburgerMenu className='icon' />
+                </span>
                 <ul className="absolute dropdown_items none block-xl">
                   {dropDownItems.map((menu, ind) => (
                     <li key={ind} className="">

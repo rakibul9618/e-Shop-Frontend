@@ -1,0 +1,24 @@
+@use '../config/variables' as C;
+@use '../mixins/breakpoint' as *;
+
+.price {
+  .old_price {
+    color: C.$gray_text;
+    text-decoration: line-through;
+    font-size: 16px;
+    align-self: flex-end;
+  }
+}
+
+.offer_badge {
+  top: 15px;
+  right: 5px;
+  background-color: C.$primary;
+  line-height: 1;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(53, 119, 240, 20%);
+}

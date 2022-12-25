@@ -1,7 +1,47 @@
+import { useRef } from 'react';
 import Container from '@/components/layouts/Container';
 import CategoryCart from '@/components/shared/CategoryCart';
-import Image from 'next/image';
-import Link from 'next/link';
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+
+// import required modules
+import { FreeMode } from "swiper";
+
+// icons
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+
+const breakpoint = {
+    340: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        slidesPerGroup: 2
+    },
+    500: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+        slidesPerGroup: 2
+    },
+    700: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        slidesPerGroup: 3
+    },
+    992: {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        slidesPerGroup: 4
+    },
+    1200: {
+        slidesPerView: 6,
+        spaceBetween: 40,
+        slidesPerGroup: 5
+    }
+}
 
 
 const categoryList = [
@@ -41,16 +81,55 @@ const categoryList = [
         "image": "/images/category/category6.png",
         "href": "/"
     },
+    {
+        "id": 7,
+        "title": "Computer",
+        "image": "/images/category/category1.png",
+        "href": "/"
+    },
+    {
+        "id": 8,
+        "title": "phones",
+        "image": "/images/category/category2.png",
+        "href": "/"
+    },
+    {
+        "id": 9,
+        "title": "watch",
+        "image": "/images/category/category3.png",
+        "href": "/"
+    },
 ]
 
 const Category = () => {
+    const swiperRef = useRef();
     return (
         <Container>
-            <h3 className='lg_title'>popular Category</h3>
-            <div className="grid col-2 col-sm-3 col-md-4 col-xl-6 gap-20 mt-8 category_list">
-                {categoryList.map((item, ind) => (
-                    <CategoryCart items={item} key={ind} />
-                ))}
+            <div className="flex flex-between items-center gap-20 header_arrow">
+                <h3 className="lg_title">popular Category</h3>
+                <div className="flex-middle gap-20">
+                    <div className='flex-middle pointer swiper_arrow' onClick={() => swiperRef.current?.slidePrev()}><AiOutlineArrowLeft /></div>
+                    <div className='flex-middle pointer swiper_arrow' onClick={() => swiperRef.current?.slideNext()}><AiOutlineArrowRight /></div>
+                </div>
+            </div>
+            <div className=" mt-8 category_list">
+                <Swiper
+                    slidesPerView={1}
+                    spaceBetween={30}
+                    freeMode={true}
+                    modules={[FreeMode]}
+                    className="mySwiper"
+                    breakpoints={breakpoint}
+                    onBeforeInit={(swiper) => {
+                        swiperRef.current = swiper;
+                    }}
+                >
+                    {categoryList.map((item, ind) => (
+                        <SwiperSlide key={ind}>
+                            <CategoryCart items={item} key={ind} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </Container>
     )

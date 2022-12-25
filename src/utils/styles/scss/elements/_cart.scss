@@ -40,24 +40,7 @@
       }
     }
   }
-  .offer_amount {
-    top: 15px;
-    right: 5px;
-    background-color: C.$primary;
-    line-height: 1;
-    padding: 6px 10px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 8px 16px 0 rgba(53, 119, 240, 20%);
-  }
-  .offer_price {
-    color: C.$gray_text;
-    text-decoration: line-through;
-    font-size: 16px;
-    align-self: flex-end;
-  }
+
   &:hover {
     .image_holder {
       box-shadow: 0px 1px 28px 7px #f3f1f8;
@@ -67,6 +50,46 @@
     }
     .product_action {
       bottom: 20px;
+    }
+  }
+}
+
+.flash_cart {
+  padding: 40px 15px;
+  background-color: C.$light_gray;
+  .countdown_section {
+    height: 55px;
+    width: 55px;
+    background-color: C.$white;
+    .countdown_number {
+      font-size: 18px;
+    }
+    .countdown_unit {
+      font-size: 14px;
+      color: C.$gray_text;
+    }
+  }
+  .check_out {
+    padding: 16px 38px;
+    border-radius: 6px;
+  }
+
+  // media query
+
+  @include breakpoint(sm) {
+    padding: 65px 80px;
+    .countdown_section {
+      height: 80px;
+      width: 80px;
+      .countdown_number {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @include breakpoint(xl) {
+    .poster_countdown_thumbnail {
+      margin-top: -100px;
     }
   }
 }

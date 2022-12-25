@@ -12,3 +12,15 @@
     color: C.$black;
   }
 }
+
+.swiper-wrapper {
+  align-items: stretch;
+  .swiper-slide {
+    flex: 1 0 auto;
+    height: auto;
+    a {
+      display: block;
+      height: 100%;
+    }
+  }
+}

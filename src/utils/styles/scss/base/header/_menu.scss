@@ -31,10 +31,12 @@
       display: block;
     }
     .category {
-      span {
+      .category_title {
         padding: 8px 10px;
         background-color: C.$primary;
         color: C.$white;
+        line-height: 26px;
+        border-radius: 4px;
       }
     }
     .icon {
