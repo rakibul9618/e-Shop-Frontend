@@ -55,24 +55,6 @@ const accordionList = [
                 "title": "Sun Care",
             },
         ]
-    },
-     {
-        "id": 4,
-        "title": "Category",
-        "items": [
-            {
-                "id": 1,
-                "title": "Sun Care",
-            },
-            {
-                "id": 2,
-                "title": "Sun Care",
-            },
-            {
-                "id": 3,
-                "title": "Sun Care",
-            },
-        ]
     }
 ]
 
