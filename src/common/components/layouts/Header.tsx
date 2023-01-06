@@ -6,6 +6,7 @@ import Navbar from './navbar/Navbar'
 import Drawer from './Drawer';
 import Count from '../shared/Count';
 import { breakpointContext } from '@/provider/BreakpointProvider';
+import { productType } from '@/types/product';
 
 // logo
 import logo from "@/images/logo.png"
@@ -30,7 +31,27 @@ import { HiPlus } from 'react-icons/hi';
 import { BiMinus } from 'react-icons/bi';
 import { RxCross2 } from 'react-icons/rx';
 
-const dropDownItems = [
+interface ProductItemsType {
+  id: number;
+  title: string;
+  href: string;
+}
+
+interface ProductType {
+  id: number;
+  title: string;
+  image: any;
+  items: ProductItemsType []
+}
+
+
+interface DropDownItemsType extends ProductItemsType {
+  products?: ProductType []
+}
+
+
+
+const dropDownItems: DropDownItemsType[] = [
   {
     "id": 1,
     "title": "Trending this week",
@@ -44,7 +65,7 @@ const dropDownItems = [
   {
     "id": 3,
     "title": "Men's Fashion",
-    "href": false,
+    "href": "",
     "products": [
       {
         "id": 1,
@@ -100,7 +121,7 @@ const dropDownItems = [
   {
     "id": 4,
     "title": "Women's Fashion",
-    "href": false,
+    "href": "",
     "products": [
       {
         "id": 1,
@@ -176,7 +197,7 @@ const dropDownItems = [
   {
     "id": 5,
     "title": "Baby Product",
-    "href": false,
+    "href": "",
     "products": [
       {
         "id": 1,
@@ -237,7 +258,7 @@ const dropDownItems = [
   {
     "id": 6,
     "title": "Accessories",
-    "href": false,
+    "href": "",
     "products": [
       {
         "id": 1,
@@ -380,24 +401,23 @@ const Header = () => {
   const [product, setProduct] = useState([...products])
   const [showCategory, setShowCategory] = useState(false);
   const [showCart, setShowCart] = useState(false);
-  const [innerDrawer, setInnerDrawer] = useState(false);
-  const [prodCount, setProdCount] = useState(1)
+  const [innerDrawer, setInnerDrawer] = useState< number | boolean | null >(null);
   const { xlAndUp } = useContext(breakpointContext);
 
   const closeCategory = () => {
     setShowCategory(false);
-    setInnerDrawer(0);
+    setInnerDrawer(null);
   }
 
   const closeCart = () => {
     setShowCart(false);
   }
-  const decrement = (id) => {
+  const decrement = (id:number) => {
     let list = [...product];
     if (list[id].count > 0) list[id].count -= 1;
     setProduct([...list])
   }
-  const increment = (id) => {
+  const increment = (id:number) => {
     let list = [...product];
     list[id].count += 1;
     setProduct([...list])
@@ -444,7 +464,7 @@ const Header = () => {
                                 <Image src={prod.image} alt="" />
                               </div>
                               <ul className="mt-3 submenu_items">
-                                {prod.items.map(item => (
+                                {prod.items.map((item) => (
                                   <li key={item.id} className="mt-1">
                                     <Link className='text-500' href={item.href}>{item.title}</Link>
                                   </li>

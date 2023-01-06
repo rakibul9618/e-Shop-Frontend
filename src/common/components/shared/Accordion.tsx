@@ -1,8 +1,12 @@
 
 import { useRef, useState } from "react";
 
+interface accordionType {
+    title: string;
+    children: React.ReactNode
+}
 
-const Accordion = ({ title, children, ...rest }) => {
+const Accordion: React.FC<accordionType> = ({ title, children, ...rest }) => {
     const [active, setActive] = useState(false);
     const [height, setHeight] = useState("0px");
     const content = useRef(null);

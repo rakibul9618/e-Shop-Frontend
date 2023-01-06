@@ -64,12 +64,12 @@ const Shop = () => {
     return (
         <Container>
             <h1>shop</h1>
-            {accordionList.map((id, title, items) => (
+            {accordionList.map(({id, title, items}) => (
                 <Accordion title={title} key={id}>
                     {items.map((item) => (
                         <div className="input_group" key={item.id}>
                             <input type="checkbox" id="demoCheckbox" name="checkbox" value="1" />
-                            <label for="demoCheckbox">{item.title}</label>
+                            <label htmlFor="demoCheckbox">{item.title}</label>
                         </div>
                     ))}
                 </Accordion>
