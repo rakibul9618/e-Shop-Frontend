@@ -1,3 +1,6 @@
+import ProductOverlay from '@/components/shared/ProductOverlay';
+import FlashSell from '@/components/elements/FlashSell';
+import { NextPage } from 'next';
 import { useRef } from 'react';
 import Head from 'next/head';
 import Header from '@/components/layouts/Header';
@@ -6,6 +9,7 @@ import Category from '@/modules/category/Category';
 import Products from '@/modules/products/Products';
 import Cta from '@/modules/cta/Cta';
 import Footer from '@/components/layouts/Footer';
+import { productListType } from '@/types/product';
 
 // images
 import ctaImage from '@/images/products/cta.jpg';
@@ -13,11 +17,7 @@ import slider1 from '@/images/products/slider1.png';
 import slider2 from '@/images/products/slider2.png';
 import slider3 from '@/images/products/slider3.png';
 
-// icons
-import ProductOverlay from '@/components/shared/ProductOverlay';
-import FlashSell from '@/components/elements/FlashSell';
-
-const productList = [
+const productList: productListType[] = [
   {
     id: 1,
     title: 'T-shirt',
@@ -29,7 +29,7 @@ const productList = [
     offer: 15,
     price: 100,
     href: '/',
-    review: 4.3,
+    review: [4.3, 4.3, 4.3],
     infoList: [
       {
         id: 1,
@@ -56,7 +56,7 @@ const productList = [
     offer: 15,
     price: 100,
     href: '/',
-    review: 4.3,
+    review: [4.3, 4.3, 4.3],
     infoList: [
       {
         id: 1,
@@ -83,7 +83,7 @@ const productList = [
     offer: 15,
     price: 100,
     href: '/',
-    review: 4.3,
+    review: [4.3, 4.3, 4.3],
     infoList: [
       {
         id: 1,
@@ -137,7 +137,7 @@ const productList = [
     offer: 15,
     price: 100,
     href: '/',
-    review: 4.3,
+    review: [4.3, 4.3, 4.3],
     infoList: [
       {
         id: 1,
@@ -164,7 +164,7 @@ const productList = [
     offer: 15,
     price: 100,
     href: '/',
-    review: 4.3,
+    review: [4.3, 4.3, 4.3],
     infoList: [
       {
         id: 1,
@@ -191,7 +191,7 @@ const productList = [
     offer: 15,
     price: 100,
     href: '/',
-    review: 4.3,
+    review: [4.3, 4.3, 4.3],
     infoList: [
       {
         id: 1,
@@ -209,14 +209,8 @@ const productList = [
   },
 ];
 
-
-
-export default function Home() {
-
-  const click = useRef(null);
-
-
-
+const Home: NextPage = () => {
+  const click = useRef<any>(null);
 
   return (
     <div className="">
@@ -229,7 +223,7 @@ export default function Home() {
       <Offers />
       <Category />
       <Products list={productList} title="New arrival" />
-      <FlashSell/>
+      <FlashSell />
       <Products list={productList} title="Trending Collections" />
       <Cta image={ctaImage} />
       <div className="trial">
@@ -239,4 +233,6 @@ export default function Home() {
       <Footer />
     </div>
   );
-}
+};
+
+export default Home;

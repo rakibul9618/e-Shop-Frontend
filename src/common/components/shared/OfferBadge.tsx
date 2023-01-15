@@ -1,9 +1,8 @@
-import React from 'react'
+import { offerPropsType } from '@/types/shared';
+import React from 'react';
 
-const OfferBadge = ({offer}) => {
-  return (
-    <div className="absolute offer_badge">{offer}% off</div>
-  )
-}
+const OfferBadge: React.FC<offerPropsType> = ({ offer }) => {
+  return <div className="absolute offer_badge">{offer}% off</div>;
+};
 
-export default OfferBadge
+export default OfferBadge;

@@ -19,7 +19,11 @@ $max-breakpoints: (
   xxl: 1599px,
 );
 
-@mixin breakpoint($mq-breakpoint, $mq-width: 'min-width', $mq-breakpoints: $breakpoints) {
+@mixin breakpoint(
+  $mq-breakpoint,
+  $mq-width: 'min-width',
+  $mq-breakpoints: $breakpoints
+) {
   @if $mq-width == 'max' {
     $mq-width: 'max-width';
     $mq-breakpoints: $max-breakpoints;
