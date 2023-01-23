@@ -6,7 +6,7 @@ echo '🏗️👷 Styling, testing your project before committing'
 
 
 # Check Commit Convention
-# npx --no -- commitlint --edit 
+npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
 
 # Check Prettier standards
 npm run check-format ||
