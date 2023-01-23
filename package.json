@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "check-types": "tsc --pretty --noEmit",
     "check-lint": "eslint . --fix --ext .ts,.tsx --ignore-pattern 'node_modules/*'",
-    "lint": "next lint"
+    "lint": "next lint",
+    "commit-lint": "npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'"
   },
   "dependencies": {
     "@next/font": "13.1.2",
@@ -27,6 +28,8 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
     "eslint": "^8.31.0",
