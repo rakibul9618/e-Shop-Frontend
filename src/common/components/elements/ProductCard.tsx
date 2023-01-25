@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { productCardPropsType } from '@/types/shared';
 import Price from './Price';
-import OfferBadge from '@/components/shared/OfferBadge';
+import OfferBadge from '@/components/elements/OfferBadge';
 
 // icons
 import { FiEye } from 'react-icons/fi';

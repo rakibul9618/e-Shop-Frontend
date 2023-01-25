@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import Container from '@/components/layouts/Container';
-import CategoryCart from '@/components/shared/CategoryCart';
+import CategoryCart from '@/components/elements/CategoryCart';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';

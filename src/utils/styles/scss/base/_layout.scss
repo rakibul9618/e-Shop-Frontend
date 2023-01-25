@@ -53,6 +53,10 @@
   }
 }
 
+.min-height {
+  min-height: calc(100vh - 148px - 106px);
+}
+
 .footer {
   background-color: C.$black;
   color: C.$white;

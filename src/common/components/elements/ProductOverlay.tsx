@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Overlay from './Overlay';
-import OfferBadge from '@/components/shared/OfferBadge';
+import OfferBadge from '@/components/elements/OfferBadge';
 import Price from './Price';
 import Count from './Count';
 import { productOverlayPropsType } from '@/types/shared';

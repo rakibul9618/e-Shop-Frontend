@@ -2,7 +2,7 @@ import { breakpointContext } from '@/provider/BreakpointProvider';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
-import Count from '../shared/Count';
+import Count from '../elements/Count';
 import Container from './Container';
 import Drawer from './Drawer';
 import Navbar from './navbar/Navbar';

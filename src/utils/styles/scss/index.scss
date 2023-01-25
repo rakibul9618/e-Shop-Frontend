@@ -16,8 +16,10 @@
 @use './elements/cta';
 @use './elements/overlay';
 @use './elements/accordion';
+@use './elements/heroBanner';
 
 @use './elements/others';
 
 // components
 @use './components/offers';
+@use './components/productsLayout';

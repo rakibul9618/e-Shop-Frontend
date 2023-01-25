@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import Container from '@/components/layouts/Container';
-import ProductCard from '@/components/shared/ProductCard';
+import ProductCard from '@/components/elements/ProductCard';
 import { productsPropsType } from './products';
 
 // Import Swiper React components
