@@ -1,34 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import { overlayPropsType } from '@/types/shared';
+import React from 'react';
 import Container from '../layouts/Container';
 
 // icons
 import { MdClose } from 'react-icons/md';
-import { overlayPropsType } from '@/types/shared';
 
-const Overlay: React.FC<overlayPropsType> = ({ children, getRef }) => {
-  const [active, setActive] = useState(false);
+const Overlay: React.FC<overlayPropsType> = ({ children, useOverlay }) => {
+  // const [active, setActive] = useState(false);
+
+  const [overlay, setOverlay] = useOverlay;
 
   const handleClose = (): void => {
-    setActive(false);
+    setOverlay(false);
   };
 
-  useEffect(() => {
-    const { current } = getRef as any;
-    function handleClick(): void {
-      setActive(true);
-    }
+  // useEffect(() => {
+  //   const { current } = getRef as any;
 
-    if (getRef && current !== null) {
-      (current as HTMLButtonElement).addEventListener(
-        'click',
-        handleClick,
-        false
-      );
-    }
-  }, [active, getRef]);
+  //   function handleClick(): void {
+  //     setActive(true);
+  //   }
+
+  //   if (getRef && current !== null) {
+
+  //     (current as HTMLButtonElement).addEventListener(
+  //       'click',
+  //       handleClick,
+  //       false
+  //     );
+  //   }
+  // }, [active, getRef]);
   return (
     <Container
-      Class={`overlay fixed  ${active ? 'active' : ''}`}
+      Class={`overlay fixed  ${overlay ? 'active' : ''}`}
       className="flex flex-center"
     >
       <div className="w-100  radius-1 overlay_content">

@@ -6,7 +6,7 @@ interface propsType {
   children: ReactNode;
 }
 
-const Layout: React.FC<propsType> = ({ children }) => {
+const ComponentLayout: React.FC<propsType> = ({ children }) => {
   return (
     <div>
       <Header />
@@ -16,4 +16,4 @@ const Layout: React.FC<propsType> = ({ children }) => {
   );
 };
 
-export default Layout;
+export default ComponentLayout;

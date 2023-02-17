@@ -23,7 +23,8 @@ import { AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
 import { BsCart2 } from 'react-icons/bs';
 import { ImArrowRight2 } from 'react-icons/im';
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { RxCross2, RxHamburgerMenu } from 'react-icons/rx';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import ImageWithClose from '../shared/ImageWithClose';
 
 interface ProductItemsType {
   id: number;
@@ -314,7 +315,7 @@ const dropDownItems: DropDownItemsType[] = [
   },
 ];
 
-const products = [
+export const products = [
   {
     id: 1,
     title: 'Full Sleeve Tshirt',
@@ -484,9 +485,9 @@ const Header: React.FC = () => {
               </div>
             </div>
             <div className="flex-middle gap-20 nav_buttons">
-              <Navbar.Button className="flex-middle whitelist_btn icon">
+              <Link href="/wish-list" className="wish_list_btn">
                 <AiOutlineHeart />
-              </Navbar.Button>
+              </Link>
               <Navbar.Button
                 className="flex-middle relative cart_btn icon"
                 onClick={(): void => setShowCart(true)}
@@ -559,14 +560,9 @@ const Header: React.FC = () => {
             <ul className="grid gap-30 cart_list">
               {product.map(({ id, title, price, count, image }, ind) => (
                 <li className="grid gap-20 pb-4 cart_item" key={id}>
-                  <div className="relative image_holder">
-                    <Image src={image} alt="" />
-                    <div className="absolute flex-middle pointer delete">
-                      <RxCross2 />
-                    </div>
-                  </div>
+                  <ImageWithClose image={image} onCloseClick={(): any => ''} />
                   <div className="w-100 content">
-                    <p className="title_des word-dots cart_title">{title}</p>
+                    <p className="title_des single-line cart_title">{title}</p>
                     <div className="flex flex-between flex-wrap gap-20 items-center mt-2 amount">
                       <Count
                         increment={(): void => increment(ind)}
@@ -584,10 +580,10 @@ const Header: React.FC = () => {
                   <h5 className="sm_title">$570</h5>
                 </div>
                 <div className="flex gap-20 flex-between mt-1">
-                  <Link href="/" className="btn text-center">
+                  <Link href="/check-out" className="btn text-center">
                     Check out
                   </Link>
-                  <Link href="/" className="btn text-center">
+                  <Link href="/cart" className="btn text-center">
                     View cart
                   </Link>
                 </div>

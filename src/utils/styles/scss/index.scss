@@ -17,9 +17,15 @@
 @use './elements/overlay';
 @use './elements/accordion';
 @use './elements/heroBanner';
+@use './elements/cartProduct';
+@use './elements/orderSummeryCard';
+@use './elements/inputField';
 
 @use './elements/others';
 
 // components
 @use './components/offers';
 @use './components/productsLayout';
+
+// shared
+@use './shared/imageWithClose';

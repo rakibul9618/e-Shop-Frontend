@@ -3,6 +3,10 @@
 -----------------------------------------*/
 @use '../mixins/breakpoint' as *;
 
+.mb-half {
+  margin-bottom: 0.25rem;
+}
+
 @for $i from 0 through 15 {
   .mt-#{$i} {
     margin-top: #{$i * 0.5}rem !important;

@@ -2,7 +2,6 @@
 @use '../../config/variables' as C;
 
 // default css
-
 .navbar {
   display: flex;
   align-items: center;
@@ -81,7 +80,13 @@
         width: max-content;
         overflow: hidden;
       }
-      button {
+      .wish_list_btn {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+      }
+      button,
+      .wish_list_btn {
         position: relative;
         z-index: 1;
         transition: all 0.4s;
@@ -268,31 +273,6 @@
         &:first-child {
           border-top: 1px solid #efefef;
           padding-top: 32px;
-        }
-      }
-    }
-
-    .image_holder {
-      width: 100px;
-      height: 100px;
-      background-color: #efefef;
-      padding: 4px;
-      border-radius: 10px;
-      .delete {
-        height: 31px;
-        width: 31px;
-        background-color: #f6f7fb;
-        border: 2px solid C.$white;
-        border-radius: 50%;
-        font-size: 12px;
-        color: C.$black;
-        top: -15px;
-        left: -10px;
-        font-size: 18px;
-        transition: all 0.3s ease-in-out;
-        &:hover {
-          background-color: C.$primary;
-          color: C.$white;
         }
       }
     }

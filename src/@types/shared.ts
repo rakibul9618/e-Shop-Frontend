@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import { StaticImageData } from 'next/image';
+import { ReactNode } from 'react';
 import { productListType } from './product';
 
 export interface countPropsType {
@@ -31,7 +31,7 @@ export interface offerPropsType {
 
 export interface overlayPropsType {
   children: ReactNode;
-  getRef: HTMLElement;
+  useOverlay: any[];
 }
 
 export interface pricePropsType {
@@ -45,5 +45,5 @@ export interface productCardPropsType {
 }
 
 export interface productOverlayPropsType {
-  getRef: any;
+  useOverlay: any[];
 }

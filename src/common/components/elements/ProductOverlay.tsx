@@ -29,8 +29,9 @@ import slider3 from '@/images/products/slider3.png';
 
 const images = [slider1, slider2, slider3];
 
-const ProductOverlay: React.FC<productOverlayPropsType> = ({ getRef }) => {
+const ProductOverlay: React.FC<productOverlayPropsType> = ({ useOverlay }) => {
   const [count, setCount] = useState(0);
+
   // thumb
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
@@ -38,7 +39,7 @@ const ProductOverlay: React.FC<productOverlayPropsType> = ({ getRef }) => {
     if (count > 0) setCount(count - 1);
   };
   return (
-    <Overlay getRef={getRef}>
+    <Overlay useOverlay={useOverlay}>
       <div className="grid gap-50 product_content">
         <div className="image_slider">
           <Swiper

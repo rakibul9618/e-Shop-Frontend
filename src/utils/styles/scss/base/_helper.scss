@@ -120,19 +120,6 @@
 }
 
 //
-// border-radius
-//
-
-@for $i from 1 through 5 {
-  .radius-#{ $i } {
-    border-radius: #{$i / 2}rem !important;
-  }
-}
-.radius-rounded {
-  border-radius: 50% !important;
-}
-
-//
 // Grid
 //
 .grid {
@@ -146,6 +133,15 @@
 }
 .justify_items-end {
   justify-items: end !important;
+}
+.justify_self-center {
+  justify-self: center !important;
+}
+.justify_self-start {
+  justify-self: start !important;
+}
+.justify_self-end {
+  justify-self: end !important;
 }
 .align_items-end {
   align-items: end !important;
@@ -163,7 +159,16 @@
   align-self: center !important;
 }
 
-@for $i from 0 through 6 {
+.col-span-2 {
+  grid-column-start: span 2;
+}
+@include breakpoint(md) {
+  .col-md-span-2 {
+    grid-column-start: span 2;
+  }
+}
+
+@for $i from 0 through 7 {
   .col-#{$i} {
     grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
   }
@@ -173,7 +178,7 @@
 }
 
 @include breakpoint(xs) {
-  @for $i from 0 through 6 {
+  @for $i from 0 through 7 {
     .col-xs-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
     }
@@ -181,7 +186,7 @@
 }
 
 @include breakpoint(sm) {
-  @for $i from 0 through 6 {
+  @for $i from 0 through 7 {
     .col-sm-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
     }
@@ -189,7 +194,7 @@
 }
 
 @include breakpoint(md) {
-  @for $i from 0 through 6 {
+  @for $i from 0 through 7 {
     .col-md-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
     }
@@ -197,17 +202,23 @@
 }
 
 @include breakpoint(lg) {
-  @for $i from 0 through 6 {
+  @for $i from 0 through 7 {
     .col-lg-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
+    }
+    .col-lg-#{$i * 10} {
+      grid-template-columns: #{$i * 10%} auto !important;
     }
   }
 }
 
 @include breakpoint(xl) {
-  @for $i from 0 through 6 {
+  @for $i from 0 through 7 {
     .col-xl-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(0, 1fr)) !important;
+    }
+    .col-xl-#{$i * 10} {
+      grid-template-columns: #{$i * 10%} auto !important;
     }
   }
 }
@@ -433,7 +444,15 @@
   color: C.$pink !important;
 }
 
+.text-error {
+  color: C.$warning !important;
+}
+
 // background
+
+.bg-white {
+  background-color: C.$white !important;
+}
 
 .bg-primary {
   background-color: C.$primary !important;
@@ -445,8 +464,26 @@
 //
 //  border-radius
 //
+
+@for $i from 1 through 5 {
+  .radius-#{ $i } {
+    border-radius: #{$i / 4}rem !important;
+  }
+}
+.radius-rounded {
+  border-radius: 50% !important;
+}
+
 .rounded {
   border-radius: 50% !important;
+}
+
+//
+//  borders
+//
+
+.bb-light_gray {
+  border-bottom: 1px solid #f1f1f1;
 }
 
 //
@@ -463,6 +500,13 @@
 }
 .sticky {
   position: sticky !important;
+}
+
+.top-0 {
+  top: 0;
+}
+.top-30 {
+  top: 30px;
 }
 
 .inset-0 {
@@ -508,7 +552,7 @@
   overflow-y: auto;
 }
 
-.word-dots {
+.single-line {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;

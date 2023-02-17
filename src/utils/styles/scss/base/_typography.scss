@@ -1,9 +1,15 @@
 @use '../mixins/breakpoint' as *;
 
 .title_des {
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 28px;
   font-weight: 500;
-  line-height: 30px;
+  @include breakpoint(sm) {
+    & {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
 }
 
 .upper_title {

@@ -1,7 +1,169 @@
 @use '../config/variables' as C;
+@use '../mixins/breakpoint' as *;
 
 .product_details_layout {
   display: grid;
-  grid-template-columns: 20% auto;
   gap: 20px;
+  @include breakpoint('md') {
+    grid-template-columns: 20% auto;
+  }
+  .products {
+    .szh-menu-button {
+      background-color: C.$light_gray;
+      padding: 5px 10px;
+      border-radius: 6px;
+      .icon {
+        transition: all 0.3s;
+      }
+      &.szh-menu-button--open {
+        .icon {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+}
+
+// sidebar start here
+.sidebar::-webkit-scrollbar {
+  width: 2px;
+}
+.sidebar::-webkit-scrollbar-track {
+  border-radius: px;
+  background: #dadada;
+}
+.sidebar::-webkit-scrollbar-track:hover {
+  background: #78797a;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #bbbbbb;
+  border-radius: 10px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  display: none;
+  overflow: auto;
+  @include breakpoint(md) {
+    display: block;
+  }
+  .accordion__title {
+    .title {
+      border-bottom: 2px solid C.$gray;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: C.$primary;
+        transition: 0.3s;
+      }
+    }
+    .plus {
+      display: block;
+    }
+    .minus {
+      display: none;
+    }
+    &.active {
+      .plus {
+        display: none;
+      }
+      .minus {
+        display: block;
+      }
+      .title::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.grid_product_layout {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  column-gap: 16px;
+  row-gap: 25px;
+  @include breakpoint('xs') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint('sm') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include breakpoint('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include breakpoint('xl') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// pagination
+.pagination_wrapper {
+  display: flex;
+  justify-content: center;
+  .pagination {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 50px;
+    box-shadow: 0px 6px 26px rgba(153, 153, 153, 0.25);
+    gap: 5px;
+    .previous_link {
+      margin-right: 10px;
+      transition: all 0.3s;
+      &:hover {
+        color: C.$primary;
+      }
+    }
+    .next_link {
+      margin-left: 10px;
+      transition: all 0.3s;
+
+      &:hover {
+        color: C.$primary;
+      }
+    }
+    .page_item {
+      a {
+        display: block;
+        background-color: white;
+        padding: 2px 12px;
+        border-radius: 5px;
+        transition: all 0.3s;
+        &:hover {
+          color: C.$white;
+          background-color: C.$primary;
+          box-shadow: 0px 3px 5px #cfd1ff;
+        }
+      }
+      &.active {
+        a {
+          color: C.$white;
+          background-color: C.$primary;
+          box-shadow: 0px 3px 5px #cfd1ff;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(sm) {
+    .pagination {
+      padding: 5px 25px;
+      gap: 15px;
+      .previous_link {
+        margin-right: 25px;
+      }
+      .next_link {
+        margin-left: 25px;
+      }
+    }
+  }
 }

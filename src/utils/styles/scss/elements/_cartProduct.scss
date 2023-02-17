@@ -1,0 +1,59 @@
+@use '../config/variables' as C;
+@use '../mixins/breakpoint' as *;
+
+.single_cart_product {
+  grid-template-columns: 100px auto;
+
+  @include breakpoint(md) {
+    grid-template-columns: 100px calc(100% - 450px - 90px) 350px;
+  }
+  .image {
+    grid-row-start: span 2;
+    @include breakpoint(md) {
+      grid-row-start: auto;
+    }
+  }
+  .product_title {
+    max-width: 500px;
+  }
+
+  .prices,
+  .details {
+    justify-self: start;
+    @include breakpoint(md) {
+      justify-self: auto;
+    }
+  }
+  .sub_total {
+    display: none;
+    @include breakpoint(sm) {
+      display: block;
+    }
+  }
+}
+
+.wish_list_wrapper {
+  .single_cart_product {
+    grid-template-columns: 100px auto;
+    @include breakpoint(md) {
+      grid-template-columns: 100px auto 430px;
+    }
+    @include breakpoint(lg) {
+      grid-template-columns: 100px 350px auto;
+    }
+    .details {
+      span {
+        display: none;
+        @include breakpoint(sm) {
+          display: block;
+        }
+      }
+      svg {
+        display: block;
+        @include breakpoint(sm) {
+          display: none;
+        }
+      }
+    }
+  }
+}
