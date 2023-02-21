@@ -6,8 +6,9 @@ import profile from '@/images/user/profile.webp';
 
 // icons
 import { useRouter } from 'next/router';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { BiExit } from 'react-icons/bi';
 import { BsCardList } from 'react-icons/bs';
 import { IoSettingsOutline } from 'react-icons/io5';
 
@@ -16,12 +17,7 @@ type propsType = {
 };
 
 const UserLayout: React.FC<propsType> = ({ children }) => {
-  const [active, setActive] = useState<boolean>(true);
-  const router = useRouter();
-
-  useEffect(() => {
-    router.pathname === '/user' ? setActive(true) : setActive(false);
-  }, [router.pathname]);
+  const { pathname, push } = useRouter();
 
   return (
     <Container Class="user_wrapper" className="user grid gap-30">
@@ -38,23 +34,38 @@ const UserLayout: React.FC<propsType> = ({ children }) => {
         <div className="menu mt-md-4 mb-md-3">
           <div
             className={`menu_list account_setting px-3 py-2 flex items-center gap-10 ${
-              active ? 'active' : ''
+              pathname === '/user' ? 'active' : ''
             }`}
             onClick={(): void => {
-              router.push('/user');
+              push('/user');
             }}
           >
             <IoSettingsOutline /> <span>Account Setting</span>
           </div>
           <div
             className={`menu_list order_list px-3 py-2 flex items-center gap-10 ${
-              active ? '' : 'active'
+              pathname === '/user/order-list' ? 'active' : ''
             }`}
             onClick={(): void => {
-              router.push('/user/order-list');
+              push('/user/order-list');
             }}
           >
             <BsCardList /> <span>Order List</span>
+          </div>
+          <div
+            className={`menu_list order_list px-3 py-2 flex items-center gap-10 ${
+              pathname === '/user/change-password' ? 'active' : ''
+            }`}
+            onClick={(): void => {
+              push('/user/change-password');
+            }}
+          >
+            <BsCardList /> <span>Change Password</span>
+          </div>
+          <div
+            className={`menu_list log_out px-3 py-2 flex items-center gap-10`}
+          >
+            <BiExit /> <span>Log Out</span>
           </div>
         </div>
       </div>

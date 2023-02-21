@@ -91,3 +91,61 @@ export const RegisterSchema = z.object({
       }
     ),
 });
+
+export const ChangePasswordSchema = z.object({
+  oldPassword: z.string().min(8, { message: 'Use more than 8 character' }),
+  newPassword: z
+    .string()
+    .min(8, { message: 'Use more than 8 character' })
+    .refine(
+      (value) => {
+        return /[A-Z]/.test(value); // checks if the string contains an uppercase letter
+      },
+      {
+        message: 'Must contain at least one uppercase letter',
+      }
+    )
+    .refine(
+      (value) => {
+        return /[0-9]/.test(value); // checks if the string contains a number
+      },
+      {
+        message: 'Must contain at least one number',
+      }
+    )
+    .refine(
+      (value) => {
+        return /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value); // checks if the string contains a special character
+      },
+      {
+        message: 'Must contain at least one special character',
+      }
+    ),
+  confirmPassword: z
+    .string()
+    .min(8, { message: 'Use more than 8 character' })
+    .refine(
+      (value) => {
+        return /[A-Z]/.test(value); // checks if the string contains an uppercase letter
+      },
+      {
+        message: 'Must contain at least one uppercase letter',
+      }
+    )
+    .refine(
+      (value) => {
+        return /[0-9]/.test(value); // checks if the string contains a number
+      },
+      {
+        message: 'Must contain at least one number',
+      }
+    )
+    .refine(
+      (value) => {
+        return /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value); // checks if the string contains a special character
+      },
+      {
+        message: 'Must contain at least one special character',
+      }
+    ),
+});

@@ -1,8 +1,27 @@
 import { z } from 'zod';
 
 export const ProfileEditSchema = z.object({
-  email: z
+  name: z
     .string()
+    .min(3, { message: 'At least 3 words Required' })
+    .regex(/^[a-z0-9\s-]+$/i, { message: 'Allow a-z, 0-9 and hyphen' }),
+  date: z.string().min(5, {
+    message: 'Please select a date and time',
+  }),
+  address: z.string().min(8, { message: 'Address is required' }),
+  gender: z
+    .string()
+    .nullable()
+    .refine(
+      (value) => {
+        return !!value; // checks if the string contains a special character
+      },
+      {
+        message: 'Gender is required ',
+      }
+    ),
+  email: z
+    .string({ invalid_type_error: "That's not a date!" })
     .min(1, 'Email is Required')
     .email({ message: 'Please enter a valid Email' })
     .refine(
@@ -13,31 +32,8 @@ export const ProfileEditSchema = z.object({
         message: 'Only "_" and "." special character is allowed',
       }
     ),
-  password: z
+  phone: z
     .string()
-    .min(8, { message: 'Use more than 8 character' })
-    .refine(
-      (value) => {
-        return /[A-Z]/.test(value); // checks if the string contains an uppercase letter
-      },
-      {
-        message: 'Must contain at least one uppercase letter',
-      }
-    )
-    .refine(
-      (value) => {
-        return /[0-9]/.test(value); // checks if the string contains a number
-      },
-      {
-        message: 'Must contain at least one number',
-      }
-    )
-    .refine(
-      (value) => {
-        return /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value); // checks if the string contains a special character
-      },
-      {
-        message: 'Must contain at least one special character',
-      }
-    ),
+    .min(10, { message: 'Number should be more than and equal 10 character' })
+    .regex(/^\d+$/, { message: 'Only number is allow' }),
 });
