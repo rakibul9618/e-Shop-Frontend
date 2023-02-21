@@ -2,7 +2,6 @@ import { ReactNode, useContext, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import Accordion from '../elements/Accordion';
 import HeroBanner from '../elements/HeroBanner';
-import Layout from './ComponentLayout';
 import Container from './Container';
 
 import { Menu, MenuButton, MenuItem } from '@szhsin/react-menu';
@@ -133,7 +132,7 @@ const ProductDetailsLayout: React.FC<props> = ({ children }) => {
     // console.log(`User requested page number ${event.selected}`);
   };
   return (
-    <Layout>
+    <>
       <HeroBanner
         image="/images/products-hero-banner.jpg"
         title="Shop"
@@ -210,7 +209,7 @@ const ProductDetailsLayout: React.FC<props> = ({ children }) => {
           </div>
         </div>
       </Container>
-    </Layout>
+    </>
   );
 };
 

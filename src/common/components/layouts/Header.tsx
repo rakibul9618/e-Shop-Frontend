@@ -19,6 +19,7 @@ import product3 from '@/images/product3.png';
 import product4 from '@/images/product4.png';
 
 // icons
+import { useRouter } from 'next/router';
 import { AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
 import { BsCart2 } from 'react-icons/bs';
 import { ImArrowRight2 } from 'react-icons/im';
@@ -396,6 +397,8 @@ const Header: React.FC = () => {
   const [innerDrawer, setInnerDrawer] = useState<number | boolean | null>(null);
   const { xlAndUp } = useContext(breakpointContext);
 
+  const router = useRouter();
+
   const closeCategory = (): void => {
     setShowCategory(false);
     setInnerDrawer(null);
@@ -495,8 +498,13 @@ const Header: React.FC = () => {
                 <BsCart2 />
                 <span className="absolute rounded flex-middle">2</span>
               </Navbar.Button>
-              <Navbar.Button className="flex-middle primary-btn radius-1 sign_up">
-                Sign Up
+              <Navbar.Button
+                className="flex-middle primary-btn radius-1 sign_up"
+                onClick={(): void => {
+                  router.push('/auth');
+                }}
+              >
+                Sign In
               </Navbar.Button>
             </div>
           </Navbar.Links>

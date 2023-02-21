@@ -1,7 +1,6 @@
 // import ComponentLayout from '@/components/layouts/ComponentLayout';
 import OrderSummeryCard from '@/components/elements/OrderSummeryCard';
 import Overlay from '@/components/elements/Overlay';
-import ComponentLayout from '@/components/layouts/ComponentLayout';
 import Container from '@/components/layouts/Container';
 import { ShippingAddress } from '@/schema/ShippingAddress';
 import { ErrorMessage } from '@hookform/error-message';
@@ -119,62 +118,60 @@ const CheckOut: NextPage = () => {
   //   // console.log(btnRef.current);
   // }, [btnRef]);
   return (
-    <ComponentLayout>
-      <Container Class="cart_wrapper" className="grid gap-30 col-xl-60">
-        <div className="shipping_info">
-          <h3 className="md_title pb-1 bb-light_gray">Shipping Address:</h3>
+    <Container Class="cart_wrapper" className="grid gap-30 col-xl-60">
+      <div className="shipping_info">
+        <h3 className="md_title pb-1 bb-light_gray">Shipping Address:</h3>
 
-          <button
-            className="primary-btn px-5 py-1 mt-4 radius-1"
-            onClick={(): void => setOverlay(true)}
-          >
-            Add New Address
+        <button
+          className="primary-btn px-5 py-1 mt-4 radius-1"
+          onClick={(): void => setOverlay(true)}
+        >
+          Add New Address
+        </button>
+      </div>
+      <div className="product_summery">
+        <div className="sticky top-30 order__summery">
+          <OrderSummeryCard products={checkoutProducts} />
+          <button className="mt-3 primary-btn radius-1 w-100 px-2 py-1">
+            Process to Checkout
           </button>
         </div>
-        <div className="product_summery">
-          <div className="sticky top-30 order__summery">
-            <OrderSummeryCard products={checkoutProducts} />
-            <button className="mt-3 primary-btn radius-1 w-100 px-2 py-1">
-              Process to Checkout
-            </button>
-          </div>
-        </div>
-        <Overlay useOverlay={[overlay, setOverlay]}>
-          <form
-            onSubmit={handleSubmit((d) => handleOnsubmit(d))}
-            className="grid col-md-2 gap_row-20 gap_col-30 mt-6"
+      </div>
+      <Overlay useOverlay={[overlay, setOverlay]}>
+        <form
+          onSubmit={handleSubmit((d) => handleOnsubmit(d))}
+          className="grid col-md-2 gap_row-20 gap_col-30 mt-6"
+        >
+          {addressInput.map(({ id, name, type, placeholder, label }) => {
+            // console.log('outside', errors[name]);
+            return (
+              <div className="cls" key={id}>
+                <label className="block mb-half">{label}</label>
+                <input
+                  className="w-100 px-3 py-2 radius-1"
+                  type={type}
+                  {...register(name)}
+                  placeholder={placeholder}
+                />
+                <ErrorMessage
+                  errors={errors}
+                  name={name}
+                  render={({ message }): any => (
+                    <p className="text-error font-600">{message}</p>
+                  )}
+                />
+              </div>
+            );
+          })}
+          <button
+            className="primary-btn px-5 py-1 radius-1 justify_self-end col-md-span-2"
+            type="submit"
           >
-            {addressInput.map(({ id, name, type, placeholder, label }) => {
-              // console.log('outside', errors[name]);
-              return (
-                <div className="cls" key={id}>
-                  <label className="block mb-half">{label}</label>
-                  <input
-                    className="w-100 px-3 py-2 radius-1"
-                    type={type}
-                    {...register(name)}
-                    placeholder={placeholder}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name={name}
-                    render={({ message }): any => (
-                      <p className="text-error font-600">{message}</p>
-                    )}
-                  />
-                </div>
-              );
-            })}
-            <button
-              className="primary-btn px-5 py-1 radius-1 justify_self-end col-md-span-2"
-              type="submit"
-            >
-              Save
-            </button>
-          </form>
-        </Overlay>
-      </Container>
-    </ComponentLayout>
+            Save
+          </button>
+        </form>
+      </Overlay>
+    </Container>
   );
 };
 

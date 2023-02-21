@@ -1,0 +1,66 @@
+@use '../config/variables' as C;
+@use '../mixins/breakpoint' as *;
+
+.user_wrapper {
+  background-color: #f7f7f7;
+}
+
+.user {
+  grid-template-columns: 1fr;
+  @include breakpoint(md) {
+    grid-template-columns: 300px auto;
+  }
+  .user_sidebar {
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+    @include breakpoint(md) {
+      display: block;
+      padding: 0px;
+      gap: 0px;
+    }
+    .user_title {
+      .image {
+        max-width: 50px;
+        @include breakpoint(md) {
+          max-width: 100px;
+        }
+        .edit {
+          font-size: 14px;
+          bottom: 0;
+          right: 0;
+        }
+      }
+      .user_name {
+        display: none;
+        @include breakpoint(md) {
+          display: block;
+        }
+      }
+    }
+    .menu {
+      display: flex;
+      @include breakpoint(md) {
+        display: block;
+      }
+      .menu_list {
+        transition: all 0.4s;
+        &:hover,
+        &.active {
+          background: #f7f7f7;
+          color: C.$primary;
+          cursor: pointer;
+        }
+        svg {
+          font-size: 18px;
+        }
+        span {
+          display: none;
+          @include breakpoint(md) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
